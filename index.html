@@ -553,45 +553,56 @@
       color: var(--muted);
     }
 
-    /* ===== モバイルUX改善：ナビ自動非表示 ===== */
+    /* ===== モバイルUX改善：ナビを軽量化、説明文は非表示 ===== */
     @media (max-width: 768px) {
-      .quick-nav {
-        transition: transform 0.25s ease;
-        will-change: transform;
-      }
-
-      .quick-nav.is-hidden {
-        transform: translateY(calc(-100% - 8px));
-      }
-
-      .nav-card {
-        padding: 14px 12px;
-        border-radius: 18px;
-      }
-
-      .nav-card .nav-title {
-        font-size: 0.98rem;
-      }
-
-      .nav-card p {
-        font-size: 0.85rem;
-        line-height: 1.4;
-      }
-
-      .nav-emoji {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-        border-radius: 12px;
-      }
-
       .quick-nav {
         padding: 8px 0 10px;
       }
 
       .quick-nav-inner,
       .primary-grid {
+        gap: 8px;
+      }
+
+      .nav-card {
+        padding: 12px 12px;
+        border-radius: 18px;
+      }
+
+      .nav-card p {
+        display: none;
+      }
+
+      .nav-card .nav-title {
+        font-size: 0.96rem;
+        line-height: 1.3;
+      }
+
+      .nav-top {
+        align-items: center;
         gap: 10px;
+      }
+
+      .nav-emoji {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        font-size: 1rem;
+      }
+
+      .hero-card {
+        padding-right: 18px;
+      }
+
+      .corner-logo {
+        position: static;
+        float: right;
+        width: 72px;
+        margin: 2px 0 10px 12px;
+      }
+
+      #page-title {
+        margin-top: 0;
       }
     }
 
@@ -1720,65 +1731,5 @@
       });
     })();
   </script>
-
-  <script>
-    (function () {
-      const nav = document.querySelector('.quick-nav');
-      if (!nav) return;
-
-      const mobileQuery = window.matchMedia('(max-width: 768px)');
-      let lastScrollY = window.scrollY;
-      let ticking = false;
-
-      function resetNav() {
-        nav.classList.remove('is-hidden');
-      }
-
-      function updateNav() {
-        const currentY = window.scrollY;
-
-        if (!mobileQuery.matches) {
-          resetNav();
-          lastScrollY = currentY;
-          ticking = false;
-          return;
-        }
-
-        const scrollingDown = currentY > lastScrollY;
-        const scrollingUp = currentY < lastScrollY;
-
-        if (scrollingDown && currentY > 80) {
-          nav.classList.add('is-hidden');
-        } else if (scrollingUp || currentY <= 20) {
-          nav.classList.remove('is-hidden');
-        }
-
-        lastScrollY = currentY;
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(updateNav);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', function () {
-        if (!mobileQuery.matches) resetNav();
-      });
-
-      if (typeof mobileQuery.addEventListener === 'function') {
-        mobileQuery.addEventListener('change', function (event) {
-          if (!event.matches) resetNav();
-        });
-      } else if (typeof mobileQuery.addListener === 'function') {
-        mobileQuery.addListener(function (event) {
-          if (!event.matches) resetNav();
-        });
-      }
-    })();
-  </script>
-
 </body>
 </html>
