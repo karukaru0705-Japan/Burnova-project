@@ -1326,7 +1326,6 @@
       const surveyLink = document.getElementById('survey-link');
 
       let pendingSearchQuery = null;
-      let pendingSearchLabel = '';
       let pendingSearchStarted = false;
       let sessionStartDate = new Date();
       const formDataState = {};
@@ -1379,70 +1378,6 @@
         window.location.href = url;
       }
 
-      function getCurrentPositionAsync(options = { enableHighAccuracy: true, timeout: 8000, maximumAge: 120000 }) {
-        return new Promise((resolve, reject) => {
-          if (!navigator.geolocation) {
-            reject(new Error('Geolocation is not supported.'));
-            return;
-          }
-
-          navigator.geolocation.getCurrentPosition(resolve, reject, options);
-        });
-      }
-
-      function extractPrefectureFromAddress(address = {}) {
-        const candidates = [
-          address.state,
-          address.province,
-          address.region,
-          address.county,
-          address.state_district
-        ].filter(Boolean);
-
-        const prefecturePattern = /(東京都|北海道|(?:京都|大阪)府|.{2,3}県)/;
-
-        for (const value of candidates) {
-          const match = String(value).match(prefecturePattern);
-          if (match) return match[1];
-        }
-
-        return '';
-      }
-
-      async function reverseGeocodePrefecture(lat, lng) {
-        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lng)}&accept-language=ja`;
-
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error(`Reverse geocoding failed: ${response.status}`);
-        }
-
-        const data = await response.json();
-        return extractPrefectureFromAddress(data.address || {});
-      }
-
-      async function resolvePrefectureIfPossible() {
-        if (!pendingSearchQuery || pendingSearchQuery.startsWith('tel:')) {
-          return '';
-        }
-
-        try {
-          const position = await getCurrentPositionAsync({ enableHighAccuracy: true, timeout: 8000, maximumAge: 120000 });
-          const { latitude, longitude } = position.coords;
-          const prefecture = await reverseGeocodePrefecture(latitude, longitude);
-          return prefecture || '';
-        } catch (error) {
-          console.warn('Prefecture lookup skipped:', error);
-          return '';
-        }
-      }
-
       function searchNearby(query) {
         if (!navigator.geolocation) {
           openMapsSearch(query);
@@ -1458,7 +1393,6 @@
 
       function openSurveyModal(query, searchLabel) {
         pendingSearchQuery = query;
-        pendingSearchLabel = searchLabel;
         sessionStartDate = new Date();
         resetSurveyState();
 
@@ -1517,9 +1451,7 @@
             type: 'application/x-www-form-urlencoded;charset=UTF-8'
           });
           const queued = navigator.sendBeacon(FORM_URL, blob);
-          if (queued) {
-            return;
-          }
+          if (queued) return;
         }
 
         await fetch(FORM_URL, {
@@ -1545,10 +1477,9 @@
         return true;
       }
 
-      async function captureAutoFields() {
+      function captureAutoFields() {
         const clickDate = new Date();
         const elapsedSeconds = Math.max(0, Math.round((clickDate.getTime() - sessionStartDate.getTime()) / 1000));
-
         formDataState[ENTRY_TIME_TO_SEARCH] = String(elapsedSeconds);
         formDataState[ENTRY_SEARCH_CLICK] = formatDateTime(clickDate);
       }
@@ -1632,7 +1563,7 @@
 
       surveySkipBtn?.addEventListener('click', async () => {
         if (!validateStep1()) return;
-        await captureAutoFields();
+        captureAutoFields();
         try {
           await sendToGoogleForm(formDataState);
         } catch (error) {
@@ -1643,7 +1574,7 @@
 
       surveySubmitExtraBtn?.addEventListener('click', async () => {
         if (!validateStep1()) return;
-        await captureAutoFields();
+        captureAutoFields();
         collectStep2Fields();
         try {
           await sendToGoogleForm(formDataState);
@@ -1655,7 +1586,7 @@
 
       surveySkipExtraBtn?.addEventListener('click', async () => {
         if (!validateStep1()) return;
-        await captureAutoFields();
+        captureAutoFields();
         try {
           await sendToGoogleForm(formDataState);
         } catch (error) {
