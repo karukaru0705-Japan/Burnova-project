@@ -1,12 +1,11 @@
-f<!doctype html>
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#fff7f2" />
-  <meta name="description" content="Burnovaの一般向け熱傷ガイド。やけどしたときの初期対応、受診の目安、注意点、相談先をスマホで確認できるようにまとめたWebページです。" />
-  <title>やけどしたらどうする？｜応急処置と受診の目安 | Burnova</title>
-  <meta name="description" content="やけどした時の応急処置、冷やし方、受診の目安をわかりやすく解説。迷った時にすぐに確認できる無料ツールです。">
+  <meta name="description" content="やけどしたときの応急処置、冷やし方、受診の目安をわかりやすく解説。迷ったときにすぐ確認できる無料ツールです。" />
+  <title>やけど 応急処置｜冷やし方・受診目安・相談先【Burnova】</title>
   <style>
     :root {
       --bg: #fffaf7;
@@ -182,7 +181,7 @@ f<!doctype html>
       flex: 0 0 auto;
     }
 
-    .nav-card h2 {
+    .nav-card .nav-title {
       margin: 0;
       font-size: 1.06rem;
       line-height: 1.35;
@@ -225,7 +224,7 @@ f<!doctype html>
       flex: 0 0 auto;
     }
 
-    .section-head h3 {
+    .section-head h2 {
       margin: 0;
       font-size: 1.28rem;
       line-height: 1.35;
@@ -293,7 +292,7 @@ f<!doctype html>
       margin-top: 14px;
     }
 
-    .group h4 {
+    .group h3 {
       margin: 0 0 6px;
       font-size: 1rem;
     }
@@ -416,9 +415,9 @@ f<!doctype html>
       position: absolute;
       top: 14px;
       right: 14px;
-      width: 80px;
+      width: 64px;
       height: auto;
-      opacity: 0.9;
+      opacity: 0.88;
       z-index: 3;
       pointer-events: none;
     }
@@ -560,8 +559,8 @@ f<!doctype html>
       <div class="eyebrow">Burnova｜一般向け参考情報</div>
       <section class="hero-card" aria-labelledby="page-title">
         <img src="burnova-logo.png" class="corner-logo" alt="Burnova logo" loading="eager" decoding="async" />
-        <h1 id="page-title"><a href="#top" class="title-link">やけどしたらどうする？</a></h1>
-        <p class="lead">応急処置と受診の目安を、落ち着いて確認できるようまとめました。緊急時の対応の参考としてご利用ください。診断や方針決定を行うものでなく、医師による判断を代替するツールではありませんのでご注意ください。</p>
+        <h1 id="page-title"><a href="#top" class="title-link">やけどの応急処置｜まず何をする？</a></h1>
+        <p class="lead">やけどしたときの応急処置、冷やし方、受診の目安を、落ち着いて確認できるようまとめました。緊急時の対応の参考としてご利用ください。診断や方針決定を行うものでなく、医師による判断を代替するツールではありませんのでご注意ください。</p>
         <div class="tag-row" aria-label="特徴">
           <span class="tag">すぐ確認できる</span>
           <span class="tag">応急処置と受診の目安</span>
@@ -580,7 +579,7 @@ f<!doctype html>
           <a class="nav-card" href="#first-aid-now">
             <div class="nav-top">
               <div>
-                <h2>ヤケドしたら最初にどうする？</h2>
+                <div class="nav-title">やけどしたら最初にどうする？</div>
                 <p>今すぐ確認したい基本対応</p>
               </div>
               <div class="nav-emoji" aria-hidden="true">💧</div>
@@ -589,7 +588,7 @@ f<!doctype html>
           <a class="nav-card" href="#first-aid-detail">
             <div class="nav-top">
               <div>
-                <h2>応急手当ての参考</h2>
+                <div class="nav-title">応急手当ての参考</div>
                 <p>受診前までの一般的な対応</p>
               </div>
               <div class="nav-emoji" aria-hidden="true">🩹</div>
@@ -598,7 +597,7 @@ f<!doctype html>
           <a class="nav-card" href="#when-to-see">
             <div class="nav-top">
               <div>
-                <h2>受診の目安</h2>
+                <div class="nav-title">受診の目安</div>
                 <p>どんなときに病院へ行く？</p>
               </div>
               <div class="nav-emoji" aria-hidden="true">🏥</div>
@@ -607,7 +606,7 @@ f<!doctype html>
           <a class="nav-card" href="#find-care">
             <div class="nav-top">
               <div>
-                <h2>受診先を探す</h2>
+                <div class="nav-title">受診先を探す</div>
                 <p>近くの医療機関を確認する</p>
               </div>
               <div class="nav-emoji" aria-hidden="true">📍</div>
@@ -616,7 +615,7 @@ f<!doctype html>
           <a class="nav-card" href="#watch-outs" style="grid-column: 1 / -1;">
             <div class="nav-top">
               <div>
-                <h2>気を付けること</h2>
+                <div class="nav-title">気を付けること</div>
                 <p>やってはいけないこと、感染を疑う変化</p>
               </div>
               <div class="nav-emoji" aria-hidden="true">⚠️</div>
@@ -631,7 +630,7 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">💧</div>
           <div>
-            <h3>ヤケドしたら最初にどうする？</h3>
+            <h2>やけどしたら最初にどうする？</h2>
             <p>まずは落ち着いて、最初の対応を確認します。</p>
           </div>
         </div>
@@ -652,12 +651,12 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">🩹</div>
           <div>
-            <h3>応急手当ての参考</h3>
+            <h2>応急手当ての手順</h2>
             <p>受傷直後から医療機関を受診するまでの、一般的な対応の例です。</p>
           </div>
         </div>
         <div class="group">
-          <h4>① 冷やす</h4>
+          <h3>① 冷やす</h3>
           <ul>
             <li>流水で冷やします（熱が取れるまで）。</li>
             <li>氷や保冷剤を直接当てないようにします。</li>
@@ -665,7 +664,7 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>② 衣服・アクセサリーへの対応</h4>
+          <h3>② 衣服・アクセサリーへの対応</h3>
           <ul>
             <li>衣服の上からヤケドした場合は、そのまま冷やします。</li>
             <li>皮膚にくっついている衣服は無理に剥がさないようにします。</li>
@@ -673,7 +672,7 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>③ 水ぶくれと保護</h4>
+          <h3>③ 水ぶくれと保護</h3>
           <ul>
             <li>水ぶくれは無理につぶさないようにします。</li>
             <li>破れてしまった場合は、清潔を保つようにします。</li>
@@ -682,7 +681,7 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>④ 全身状態</h4>
+          <h3>④ 全身状態</h3>
           <ul>
             <li>強い痛みやぐったりした様子がある場合は、早めの受診を検討します。</li>
           </ul>
@@ -693,7 +692,7 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">🏥</div>
           <div>
-            <h3>受診の目安</h3>
+            <h2>受診の目安</h2>
             <p>やけどの見た目や症状によっては、医療機関での診察が必要になることがあります。</p>
           </div>
         </div>
@@ -702,7 +701,7 @@ f<!doctype html>
           以下は、受診を検討する目安です。
         </div>
         <div class="group">
-          <h4>見た目の変化</h4>
+          <h3>見た目の変化</h3>
           <ul>
             <li>皮膚が赤・ピンクっぽくなっているだけでなく、水ぶくれがある。</li>
             <li>水ぶくれの底が赤黒く見える。</li>
@@ -711,7 +710,7 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>部位</h4>
+          <h3>部位</h3>
           <ul>
             <li>顔のヤケド。</li>
             <li>手・指のヤケド。</li>
@@ -720,14 +719,14 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>範囲</h4>
+          <h3>範囲</h3>
           <ul>
             <li>手のひらより広い範囲のヤケド。</li>
             <li>複数の場所にヤケドがある。</li>
           </ul>
         </div>
         <div class="group">
-          <h4>症状</h4>
+          <h3>症状</h3>
           <ul>
             <li>痛みが強い。</li>
             <li>逆に痛みがほとんどない。</li>
@@ -736,7 +735,7 @@ f<!doctype html>
           </ul>
         </div>
         <div class="group">
-          <h4>状況</h4>
+          <h3>状況</h3>
           <ul>
             <li>乳幼児や高齢の方のヤケド。</li>
             <li>化学薬品によるヤケド。</li>
@@ -755,26 +754,26 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">📍</div>
           <div>
-            <h3>受診先を探す</h3>
+            <h2>受診先を探す</h2>
             <p>平日・日中と、夜間・休日で探し方を分けています。迷った場合は相談窓口も活用してください。</p>
           </div>
         </div>
         <div class="group">
-          <h4>平日・日中</h4>
+          <h3>平日・日中</h3>
           <p class="small">近くの皮膚科・形成外科を探します。</p>
           <div class="action-row">
             <button class="btn btn-primary" type="button" id="search-derm-plastic">近くの皮膚科・形成外科を探す</button>
           </div>
         </div>
         <div class="group">
-          <h4>夜間・休日</h4>
+          <h3>夜間・休日</h3>
           <p class="small">近くの救急病院を探します。息苦しさや意識の異常があれば119番も検討してください。</p>
           <div class="action-row">
             <button class="btn btn-primary" type="button" id="search-emergency">近くの救急病院を探す</button>
           </div>
         </div>
         <div class="group">
-          <h4>迷ったときの相談先</h4>
+          <h3>迷ったときの相談先</h3>
           <div class="action-row">
             <a class="btn btn-secondary" href="#" id="call-7119">#7119 に電話する</a>
             <a class="btn btn-secondary" href="#" id="call-8000">#8000 に電話する（こども）</a>
@@ -795,12 +794,12 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">⚠️</div>
           <div>
-            <h3>気を付けること</h3>
+            <h2>やってはいけないこと・注意点</h2>
             <p>やってはいけないことと、あとから出てくる変化をまとめています。</p>
           </div>
         </div>
         <div class="group">
-          <h4>やってはいけないこと</h4>
+          <h3>やってはいけないこと</h3>
           <ul>
             <li>氷や保冷剤を直接当てないようにします。</li>
             <li>自己判断で対応しないようにします。</li>
@@ -812,7 +811,7 @@ f<!doctype html>
           <p class="small">自己判断での対応は、かえって状態を悪くすることがあります。</p>
         </div>
         <div class="group">
-          <h4>受傷後に注意すること</h4>
+          <h3>受傷後に注意すること</h3>
           <ul>
             <li>やけどした部分は清潔を保つようにします。</li>
             <li>強くこすったり、刺激を与えないようにします。</li>
@@ -837,7 +836,7 @@ f<!doctype html>
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">📚</div>
           <div>
-            <h3>やけどの知識（参考）</h3>
+            <h2>やけどの知識とよくある疑問</h2>
             <p>理解を深めるための一般的な知識です。診断や治療を目的としたものではありません。</p>
           </div>
         </div>
@@ -877,7 +876,7 @@ f<!doctype html>
       <div class="section-head">
         <div class="section-icon" aria-hidden="true">📝</div>
         <div>
-          <h3>ご意見・ご感想</h3>
+          <h2>ご意見・ご感想</h2>
           <p>使いやすさの改善や内容の見直しのため、簡単なアンケートへのご協力をお願いします。</p>
         </div>
       </div>
