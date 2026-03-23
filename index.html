@@ -616,6 +616,22 @@
       color: var(--muted);
     }
     @media (max-width: 759px) {
+      .hero-card {
+        padding-right: 18px;
+      }
+
+      .hero-card::after {
+        display: none;
+      }
+
+      .corner-logo {
+        position: static;
+        float: right;
+        width: 96px;
+        margin: 0 0 8px 12px;
+        opacity: 0.92;
+      }
+
       .quick-nav {
         padding: 10px 0 12px;
       }
@@ -639,17 +655,22 @@
         align-items: center;
       }
 
+      .nav-title {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
       .nav-card .nav-title {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
         line-height: 1.35;
         word-break: keep-all;
       }
 
       .nav-emoji {
-        width: 30px;
-        height: 30px;
-        border-radius: 10px;
-        font-size: 0.92rem;
+        width: 26px;
+        height: 26px;
+        border-radius: 9px;
+        font-size: 0.82rem;
       }
 
       .nav-footer {
@@ -834,37 +855,37 @@
         <div class="primary-grid">
           <a class="nav-card" href="#first-aid-detail">
             <div class="nav-top">
-              <div class="nav-title">「応急手当ての手順」へ</div>
+              <div class="nav-title">応急手当ての手順</div>
               <div class="nav-emoji" aria-hidden="true">🩹</div>
             </div>
           </a>
           <a class="nav-card" href="#when-to-see">
             <div class="nav-top">
-              <div class="nav-title">「受診の目安」へ</div>
+              <div class="nav-title">受診の目安</div>
               <div class="nav-emoji" aria-hidden="true">🏥</div>
             </div>
           </a>
           <a class="nav-card" href="#find-care">
             <div class="nav-top">
-              <div class="nav-title">「受診先を探す」へ</div>
+              <div class="nav-title">受診先を探す</div>
               <div class="nav-emoji" aria-hidden="true">📍</div>
             </div>
           </a>
           <a class="nav-card" href="#watch-outs">
             <div class="nav-top">
-              <div class="nav-title">「注意点」へ</div>
+              <div class="nav-title">注意点</div>
               <div class="nav-emoji" aria-hidden="true">⚠️</div>
             </div>
           </a>
           <a class="nav-card" href="#faq-section">
             <div class="nav-top">
-              <div class="nav-title">「FAQ」へ</div>
+              <div class="nav-title">FAQ</div>
               <div class="nav-emoji" aria-hidden="true">❓</div>
             </div>
           </a>
           <a class="nav-card" href="#top">
             <div class="nav-top">
-              <div class="nav-title">「ページ上部へ戻る」へ</div>
+              <div class="nav-title">ページ上部へ戻る</div>
               <div class="nav-emoji" aria-hidden="true">⬆️</div>
             </div>
           </a>
