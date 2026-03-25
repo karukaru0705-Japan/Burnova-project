@@ -226,18 +226,11 @@
       line-height: 1.5;
     }
     .nav-footer {
-      text-align: right;
+      text-align: left;
       font-size: 0.8rem;
       color: var(--muted);
-      padding-right: 6px;
+      padding-left: 4px;
       margin-top: -2px;
-    }
-
-    .survey-nav-wrap {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
     }
 
     .survey-nav-card {
@@ -745,13 +738,13 @@
 
       .nav-footer {
         font-size: 0.76rem;
-        padding-right: 4px;
+        padding-left: 2px;
         margin-top: 2px;
       }
 
-      .survey-nav-wrap {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
+      .survey-nav-row {
+        display: flex;
+        justify-content: flex-start;
       }
 
       .survey-nav-card {
@@ -773,6 +766,102 @@
     }
 
 
+    @media (min-width: 760px) {
+      .quick-nav {
+        top: 0;
+        padding: 8px 0 10px;
+        background: rgba(255,250,247,0.88);
+      }
+
+      .quick-nav-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .primary-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        grid-template-columns: none;
+      }
+
+      .nav-card {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 12px;
+        border-radius: 999px;
+        min-height: auto;
+        box-shadow: 0 8px 18px rgba(123,71,40,0.08);
+      }
+
+      .nav-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-card .nav-title {
+        font-size: 0.9rem;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .nav-emoji {
+        width: 22px;
+        height: 22px;
+        border-radius: 8px;
+        font-size: 0.76rem;
+      }
+
+      .nav-footer {
+        display: block;
+        font-size: 0.78rem;
+        color: #7b6b64;
+        padding-left: 4px;
+        margin-top: 0;
+      }
+
+      .survey-nav-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .survey-nav-card {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        width: fit-content;
+      }
+
+      .survey-nav-card strong {
+        font-size: 0.9rem;
+      }
+
+      .survey-nav-card span {
+        display: none;
+      }
+
+      .nav-cta {
+        margin-left: 0;
+        background: linear-gradient(180deg, rgba(234,108,73,0.98), rgba(217,88,51,0.96));
+        border-color: rgba(217,88,51,0.9);
+        color: #fff;
+        box-shadow: 0 10px 24px rgba(217,88,51,0.22);
+      }
+
+      .nav-cta:hover,
+      .nav-cta:active {
+        background: linear-gradient(180deg, rgba(217,88,51,1), rgba(199,75,40,0.98));
+        border-color: rgba(199,75,40,0.95);
+      }
+    }
+
+
   </style>
 
   <script type="application/ld+json">
@@ -785,7 +874,7 @@
         "name": "やけどはどのくらい冷やせばいいですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "流水で冷やします。冷やす時間に明確な決まりはありません。創部の熱が取れるまでを目安に冷却し、できるだけ早く開始してください。広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。"
+          "text": "流水で冷やします。冷やす時間に明確な決まりはありませんが、5〜20分程度とされることが多いです。できるだけ早く冷却開始し、熱が取れるまでを目安としてください。広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。"
         }
       },
       {
@@ -931,6 +1020,7 @@
         目次を開く
       </button>
       <div class="quick-nav-inner" id="quick-nav-inner">
+        <div class="nav-footer">タップして移動</div>
         <div class="primary-grid">
           <a class="nav-card" href="#first-aid-detail">
             <div class="nav-top">
@@ -964,14 +1054,13 @@
           </a>
           <a class="nav-card" href="#top">
             <div class="nav-top">
-              <div class="nav-title">ページ上部へ戻る</div>
+              <div class="nav-title">上部へ戻る</div>
               <div class="nav-emoji" aria-hidden="true">⬆️</div>
             </div>
           </a>
         </div>
-        <div class="nav-footer">タップで移動</div>
-        <div class="survey-nav-wrap">
-          <button class="survey-nav-card" type="button" id="survey-nav-trigger">
+        <div class="survey-nav-row">
+          <button class="survey-nav-card nav-cta" type="button" id="survey-nav-trigger">
             <strong>1分アンケートへ進む</strong><span>タップで回答（任意）</span>
           </button>
         </div>
@@ -1180,8 +1269,8 @@
           <details class="accordion" open>
             <summary>やけどはどのくらい冷やせばいいですか？ <span>まず最初に確認</span></summary>
             <div class="accordion-body">
-              <p>流水で冷やします。冷やす時間に明確な決まりはありません。</p>
-              <p>創部の熱が取れるまでを目安に冷却してください。できるだけ早く開始することが重要です。</p>
+              <p>流水で冷やします。冷やす時間に明確な決まりはありませんが、5〜20分程度とされることが多いです。</p>
+              <p>できるだけ早く冷却を開始し、熱が取れるまでを目安にしてください。</p>
               <p>広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。</p>
             </div>
           </details>
