@@ -1048,9 +1048,10 @@
           </a>
           <a class="nav-card" href="#faq-section">
             <div class="nav-top">
-              <div class="nav-title">FAQ</div>
+              <div class="nav-title">FAQ（よくある質問）</div>
               <div class="nav-emoji" aria-hidden="true">❓</div>
             </div>
+            
           </a>
           <a class="nav-card" href="#top">
             <div class="nav-top">
@@ -1061,7 +1062,7 @@
         </div>
         <div class="survey-nav-row">
           <button class="survey-nav-card nav-cta" type="button" id="survey-nav-trigger">
-            <strong>1分アンケートへ進む</strong><span>タップで回答（任意）</span>
+            <strong>1分アンケート（任意）</strong><span>タップで回答</span>
           </button>
         </div>
       </div>
@@ -1261,12 +1262,12 @@
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">❓</div>
           <div>
-            <h2>よくある質問（やけどの応急処置）</h2>
-            <p>緊急度の高い順に、よくある質問をまとめました。迷ったときの確認用にご利用ください。</p>
+            <h2>FAQ（よくある質問）</h2>
+            <p>よくある質問をまとめています。各質問をタップすると、回答の詳細を確認できます。</p>
           </div>
         </div>
         <div class="accordion-wrap">
-          <details class="accordion" open>
+          <details class="accordion">
             <summary>やけどはどのくらい冷やせばいいですか？ <span>まず最初に確認</span></summary>
             <div class="accordion-body">
               <p>流水で冷やします。冷やす時間に明確な決まりはありませんが、5〜20分程度とされることが多いです。</p>
@@ -1402,7 +1403,7 @@
         </div>
       </div>
       <div class="survey-box">
-        <p><strong>1分ほどの簡単なアンケート</strong>です。役に立ったか、分かりにくかった点があれば教えてください。</p>
+        <p><strong>1分ほどの簡単なアンケート（任意）</strong>です。役に立ったか、分かりにくかった点があれば教えてください。</p>
         <div class="action-row">
           <button class="btn btn-primary" type="button" id="survey-link">アンケートに回答する</button>
         </div>
@@ -1414,6 +1415,7 @@
       <div class="survey-modal" role="dialog" aria-modal="true" aria-labelledby="survey-modal-title">
         <div id="survey-step-1">
           <h3 id="survey-modal-title">このページは役に立ちましたか？</h3>
+          <p class="small">アンケートはツール改善のために利用します。回答は匿名で集計し、研究発表等に活用する場合があります。</p>
           <div class="survey-question">
             <div class="survey-yesno" aria-label="役に立ったか はい・いいえ">
               <button class="survey-yesno-btn" type="button" data-helpful="はい">はい</button>
@@ -1572,12 +1574,19 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <p><strong>免責</strong>：このページは、一般向けの参考情報です。診断や治療、受診先の決定を行うものではありません。症状や状況に応じて、最終的な判断は医療機関で行ってください。</p>
-      <ul class="disclaimer-list">
-        <li>緊急時や重症が疑われる場合は、ためらわず119番通報を検討してください。</li>
-        <li>位置情報や地図検索は、周辺の医療機関探索を補助するための機能です。</li>
-        <li>本サービスを利用した場合は、上記の内容を理解したうえで参考情報として利用したものとみなします。</li>
+<footer class="footer">
+  <p><strong>免責</strong>：このページは、一般向けの参考情報です。診断や治療、受診先の決定を行うものではありません。症状や状況に応じて、最終的な判断は医療機関で行ってください。</p>
+
+  <ul class="disclaimer-list">
+    <li>緊急時や重症が疑われる場合は、ためらわず119番通報を検討してください。</li>
+    <li>位置情報や地図検索は、周辺の医療機関探索を補助するための機能です。</li>
+    <li>本サービスを利用した場合は、上記の内容を理解したうえで参考情報として利用したものとみなします。</li>
+  </ul>
+
+  <p class="small" style="margin-top:10px; line-height:1.6;">
+    ※1分アンケートは任意回答です。回答内容はツール改善の参考として利用し、匿名で集計したうえで研究発表等に活用する場合があります。
+  </p>
+</footer>
       </ul>
 
       <div class="small" style="margin-top:12px; line-height:1.6;">
