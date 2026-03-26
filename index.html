@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#fff7f2" />
   <meta name="description" content="やけどしたときの応急処置、冷やし方、受診の目安をわかりやすく解説。迷ったときにすぐ確認できる無料ツールです。" />
   <title>やけど 応急処置｜冷やし方・受診目安・相談先【Burnova】</title>
-  <link rel="icon" type="image/png" href="/favicon.png?v=2">
-  <link rel="apple-touch-icon" href="/favicon.png?v=2">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   <style>
     :root {
@@ -150,16 +150,32 @@
     .quick-nav-toggle {
       display: none;
       appearance: none;
-      border: 1px solid rgba(234,108,73,0.18);
-      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(234,108,73,0.22);
+      background: rgba(255,255,255,0.98);
       color: var(--ink);
       border-radius: 14px;
-      padding: 12px 14px;
+      padding: 13px 14px 12px;
       width: 100%;
       font: inherit;
       font-weight: 800;
       box-shadow: var(--shadow);
       cursor: pointer;
+      text-align: left;
+      line-height: 1.35;
+    }
+
+    .quick-nav-toggle strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .quick-nav-toggle-sub {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .quick-nav-toggle:active,
@@ -1017,7 +1033,8 @@
         aria-expanded="false"
         aria-controls="quick-nav-inner"
       >
-        目次を開く
+        <strong>すぐ確認する</strong><br>
+        <span class="quick-nav-toggle-sub">応急処置・受診目安・FAQへ移動</span>
       </button>
       <div class="quick-nav-inner" id="quick-nav-inner">
         <div class="nav-footer">タップして移動</div>
@@ -2014,7 +2031,7 @@
           quickNav.classList.remove('is-open');
           if (quickNavToggle) {
             quickNavToggle.setAttribute('aria-expanded', 'false');
-            quickNavToggle.textContent = '目次を開く';
+            quickNavToggle.innerHTML = '<strong>すぐ確認する</strong><span class="quick-nav-toggle-sub">応急処置・受診目安・FAQへ移動</span>';
           }
           updateAnchorOffset();
         }
@@ -2035,7 +2052,9 @@
       quickNavToggle?.addEventListener('click', function () {
         const isOpen = quickNav.classList.toggle('is-open');
         this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        this.textContent = isOpen ? '目次を閉じる' : '目次を開く';
+        this.innerHTML = isOpen
+          ? '<strong>閉じる</strong><span class="quick-nav-toggle-sub">目次を非表示にします</span>'
+          : '<strong>すぐ確認する</strong><span class="quick-nav-toggle-sub">応急処置・受診目安・FAQへ移動</span>';
         setTimeout(updateAnchorOffset, 50);
       });
 
