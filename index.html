@@ -6,8 +6,6 @@
   <meta name="theme-color" content="#fff7f2" />
   <meta name="description" content="やけどしたときの応急処置、冷やし方、受診の目安をわかりやすく解説。迷ったときにすぐ確認できる無料ツールです。" />
   <title>やけど 応急処置｜冷やし方・受診目安・相談先【Burnova】</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   <style>
     :root {
@@ -147,26 +145,6 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    .quick-nav-toggle {
-      display: none;
-      appearance: none;
-      border: 1px solid rgba(234,108,73,0.18);
-      background: rgba(255,255,255,0.96);
-      color: var(--ink);
-      border-radius: 14px;
-      padding: 12px 14px;
-      width: 100%;
-      font: inherit;
-      font-weight: 800;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-    }
-
-    .quick-nav-toggle:active,
-    .quick-nav-toggle:hover {
-      transform: translateY(-1px);
-    }
-
     .quick-nav-inner {
       display: grid;
       gap: 12px;
@@ -226,11 +204,18 @@
       line-height: 1.5;
     }
     .nav-footer {
-      text-align: left;
+      text-align: right;
       font-size: 0.8rem;
       color: var(--muted);
-      padding-left: 4px;
+      padding-right: 6px;
       margin-top: -2px;
+    }
+
+    .survey-nav-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
     }
 
     .survey-nav-card {
@@ -459,55 +444,7 @@
       color: var(--muted);
     }
 
-    
-    @media (max-width: 759px) {
-      .quick-nav {
-        top: 0;
-        padding: 8px 0 10px;
-      }
-
-      .quick-nav-toggle {
-        display: block;
-      }
-
-      .quick-nav-inner {
-        display: none;
-        margin-top: 10px;
-      }
-
-      .quick-nav.is-open .quick-nav-inner {
-        display: grid;
-        gap: 10px;
-      }
-
-      .primary-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .nav-card {
-        padding: 10px 10px;
-        border-radius: 16px;
-      }
-
-      .nav-card .nav-title {
-        font-size: 0.84rem;
-        line-height: 1.3;
-      }
-
-      .nav-emoji {
-        width: 24px;
-        height: 24px;
-        border-radius: 8px;
-        font-size: 0.78rem;
-      }
-
-      .survey-nav-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-@media (min-width: 760px) {
+    @media (min-width: 760px) {
       .primary-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -738,13 +675,13 @@
 
       .nav-footer {
         font-size: 0.76rem;
-        padding-left: 2px;
+        padding-right: 4px;
         margin-top: 2px;
       }
 
-      .survey-nav-row {
-        display: flex;
-        justify-content: flex-start;
+      .survey-nav-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
       }
 
       .survey-nav-card {
@@ -766,102 +703,6 @@
     }
 
 
-    @media (min-width: 760px) {
-      .quick-nav {
-        top: 0;
-        padding: 8px 0 10px;
-        background: rgba(255,250,247,0.88);
-      }
-
-      .quick-nav-inner {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .primary-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
-        grid-template-columns: none;
-      }
-
-      .nav-card {
-        display: inline-flex;
-        align-items: center;
-        padding: 7px 12px;
-        border-radius: 999px;
-        min-height: auto;
-        box-shadow: 0 8px 18px rgba(123,71,40,0.08);
-      }
-
-      .nav-top {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .nav-card .nav-title {
-        font-size: 0.9rem;
-        line-height: 1.2;
-        white-space: nowrap;
-      }
-
-      .nav-emoji {
-        width: 22px;
-        height: 22px;
-        border-radius: 8px;
-        font-size: 0.76rem;
-      }
-
-      .nav-footer {
-        display: block;
-        font-size: 0.78rem;
-        color: #7b6b64;
-        padding-left: 4px;
-        margin-top: 0;
-      }
-
-      .survey-nav-row {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .survey-nav-card {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 7px 14px;
-        border-radius: 999px;
-        width: fit-content;
-      }
-
-      .survey-nav-card strong {
-        font-size: 0.9rem;
-      }
-
-      .survey-nav-card span {
-        display: none;
-      }
-
-      .nav-cta {
-        margin-left: 0;
-        background: linear-gradient(180deg, rgba(234,108,73,0.98), rgba(217,88,51,0.96));
-        border-color: rgba(217,88,51,0.9);
-        color: #fff;
-        box-shadow: 0 10px 24px rgba(217,88,51,0.22);
-      }
-
-      .nav-cta:hover,
-      .nav-cta:active {
-        background: linear-gradient(180deg, rgba(217,88,51,1), rgba(199,75,40,0.98));
-        border-color: rgba(199,75,40,0.95);
-      }
-    }
-
-
   </style>
 
   <script type="application/ld+json">
@@ -874,7 +715,7 @@
         "name": "やけどはどのくらい冷やせばいいですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "流水で冷やします。冷やす時間に明確な決まりはありませんが、5〜20分程度とされることが多いです。できるだけ早く冷却開始し、熱が取れるまでを目安としてください。広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。"
+          "text": "流水で冷やします。冷やす時間に明確な決まりはありません。創部の熱が取れるまでを目安に冷却し、できるだけ早く開始してください。広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。"
         }
       },
       {
@@ -992,7 +833,7 @@
           <ul class="notice-list">
             <li>・流水で冷やす（5〜20分を目安、氷は直接当てない）</li>
             <li>・服は無理せず対応（脱げれば脱ぐ、難しければそのまま冷やす）</li>
-            <li>・広い範囲では冷やしすぎず、体を温めることを優先（低体温を予防）</li>
+            <li>・広い範囲では冷やしすぎず、体を温めることを優先</li>
             <li>・水ぶくれは破らないよう注意</li>
             <li>・次の場合は119番を検討
               <ul class="notice-sublist">
@@ -1010,17 +851,7 @@
 
     
     <nav class="quick-nav" aria-label="主要メニュー">
-      <button
-        class="quick-nav-toggle"
-        type="button"
-        id="quick-nav-toggle"
-        aria-expanded="false"
-        aria-controls="quick-nav-inner"
-      >
-        目次を開く
-      </button>
-      <div class="quick-nav-inner" id="quick-nav-inner">
-        <div class="nav-footer">タップして移動</div>
+      <div class="quick-nav-inner">
         <div class="primary-grid">
           <a class="nav-card" href="#first-aid-detail">
             <div class="nav-top">
@@ -1048,21 +879,21 @@
           </a>
           <a class="nav-card" href="#faq-section">
             <div class="nav-top">
-              <div class="nav-title">FAQ（よくある質問）</div>
+              <div class="nav-title">FAQ</div>
               <div class="nav-emoji" aria-hidden="true">❓</div>
             </div>
-            
           </a>
           <a class="nav-card" href="#top">
             <div class="nav-top">
-              <div class="nav-title">上部へ戻る</div>
+              <div class="nav-title">ページ上部へ戻る</div>
               <div class="nav-emoji" aria-hidden="true">⬆️</div>
             </div>
           </a>
         </div>
-        <div class="survey-nav-row">
-          <button class="survey-nav-card nav-cta" type="button" id="survey-nav-trigger">
-            <strong>1分アンケート（任意）</strong><span>タップで回答</span>
+        <div class="nav-footer">タップで移動</div>
+        <div class="survey-nav-wrap">
+          <button class="survey-nav-card" type="button" id="survey-nav-trigger">
+            <strong>1分アンケートへ進む</strong><span>タップで回答（任意）</span>
           </button>
         </div>
       </div>
@@ -1084,7 +915,7 @@
           <ul>
             <li>流水で5〜20分を目安に冷やします。できるだけ早く医療機関へ相談してください。</li>
             <li>氷や保冷剤を直接当てないようにします。</li>
-            <li>広い範囲を冷やす場合は、体が冷えすぎないように注意します。（低体温の予防）</li>
+            <li>広い範囲を冷やす場合は、体が冷えすぎないように注意します。</li>
           </ul>
         </div>
         <div class="group">
@@ -1262,16 +1093,16 @@
         <div class="section-head">
           <div class="section-icon" aria-hidden="true">❓</div>
           <div>
-            <h2>FAQ（よくある質問）</h2>
-            <p>よくある質問をまとめています。各質問をタップすると、回答の詳細を確認できます。</p>
+            <h2>よくある質問（やけどの応急処置）</h2>
+            <p>緊急度の高い順に、よくある質問をまとめました。迷ったときの確認用にご利用ください。</p>
           </div>
         </div>
         <div class="accordion-wrap">
-          <details class="accordion">
+          <details class="accordion" open>
             <summary>やけどはどのくらい冷やせばいいですか？ <span>まず最初に確認</span></summary>
             <div class="accordion-body">
-              <p>流水で冷やします。冷やす時間に明確な決まりはありませんが、5〜20分程度とされることが多いです。</p>
-              <p>できるだけ早く冷却を開始し、熱が取れるまでを目安にしてください。</p>
+              <p>流水で冷やします。冷やす時間に明確な決まりはありません。</p>
+              <p>創部の熱が取れるまでを目安に冷却してください。できるだけ早く開始することが重要です。</p>
               <p>広い範囲を長時間冷やし続けると体温が下がりすぎることがあるため注意してください。</p>
             </div>
           </details>
@@ -1287,7 +1118,7 @@
           <details class="accordion">
             <summary>服の上からやけどした場合はどうすればいいですか？ <span>衣服への対応</span></summary>
             <div class="accordion-body">
-              <p>簡単に脱げる場合には脱いでください。難しい場合には無理に脱がさず、そのまま流水で冷やしてください。</p>
+              <p>無理に脱がさず、そのまま流水で冷やしてください。</p>
               <p>皮膚に貼り付いている場合は無理に剥がさないでください。ただし、化学物質が付着している場合は速やかに除去が必要です。</p>
             </div>
           </details>
@@ -1378,7 +1209,26 @@
             </div>
           </details>
 
+          
           <details class="accordion">
+            <summary>やけど後の処置はどうすればいいですか？ <span>通院と自宅処置の流れ</span></summary>
+            <div class="accordion-body">
+              <p>やけどは時間が経つと深くなることがあります。</p>
+              <p>また、感染を起こすこともあります。</p>
+              <p>そのため、最初の数日は毎日〜こまめな通院で状態を確認することが重要です。</p>
+              <p>数日後〜落ち着いてきたら、医師の指示に従い、自宅での処置を行います。</p>
+              <ul>
+                <li>1日1回の処置</li>
+                <li>泡やシャワーでやさしく洗う</li>
+                <li>汚れやぬめりを流す</li>
+                <li>処方された薬を使用</li>
+                <li>清潔なガーゼで保護</li>
+              </ul>
+              <p>状態が安定すると、通院間隔は徐々にあいていきます。</p>
+              <p>やけどの広さ・深さ・部位によって、必要な処置や通院頻度は異なります。必ず医師の指示に従ってください。</p>
+            </div>
+          </details>
+<details class="accordion">
             <summary>化学物質によるやけどはどう対応すればいいですか？ <span>温度より除去が重要</span></summary>
             <div class="accordion-body">
               <p>化学物質によるやけどでは、温度ではなく「除去」が重要です。</p>
@@ -1403,7 +1253,7 @@
         </div>
       </div>
       <div class="survey-box">
-        <p><strong>1分ほどの簡単なアンケート（任意）</strong>です。役に立ったか、分かりにくかった点があれば教えてください。</p>
+        <p><strong>1分ほどの簡単なアンケート</strong>です。役に立ったか、分かりにくかった点があれば教えてください。</p>
         <div class="action-row">
           <button class="btn btn-primary" type="button" id="survey-link">アンケートに回答する</button>
         </div>
@@ -1415,7 +1265,6 @@
       <div class="survey-modal" role="dialog" aria-modal="true" aria-labelledby="survey-modal-title">
         <div id="survey-step-1">
           <h3 id="survey-modal-title">このページは役に立ちましたか？</h3>
-          <p class="small">アンケートはツール改善のために利用します。回答は匿名で集計し、研究発表等に活用する場合があります。</p>
           <div class="survey-question">
             <div class="survey-yesno" aria-label="役に立ったか はい・いいえ">
               <button class="survey-yesno-btn" type="button" data-helpful="はい">はい</button>
@@ -1574,35 +1423,13 @@
       </div>
     </div>
 
-<footer class="footer">
-  <p><strong>免責</strong>：このページは、一般向けの参考情報です。診断や治療、受診先の決定を行うものではありません。症状や状況に応じて、最終的な判断は医療機関で行ってください。</p>
-
-  <ul class="disclaimer-list">
-    <li>緊急時や重症が疑われる場合は、ためらわず119番通報を検討してください。</li>
-    <li>位置情報や地図検索は、周辺の医療機関探索を補助するための機能です。</li>
-    <li>本サービスを利用した場合は、上記の内容を理解したうえで参考情報として利用したものとみなします。</li>
-  </ul>
-
-  <p class="small" style="margin-top:10px; line-height:1.6;">
-    ※1分アンケートは任意回答です。回答内容はツール改善の参考として利用し、匿名で集計したうえで研究発表等に活用する場合があります。
-  </p>
-</footer>
+    <footer class="footer">
+      <p><strong>免責</strong>：このページは、一般向けの参考情報です。診断や治療、受診先の決定を行うものではありません。症状や状況に応じて、最終的な判断は医療機関で行ってください。</p>
+      <ul class="disclaimer-list">
+        <li>緊急時や重症が疑われる場合は、ためらわず119番通報を検討してください。</li>
+        <li>位置情報や地図検索は、周辺の医療機関探索を補助するための機能です。</li>
+        <li>本サービスを利用した場合は、上記の内容を理解したうえで参考情報として利用したものとみなします。</li>
       </ul>
-
-      <div class="small" style="margin-top:12px; line-height:1.6;">
-        <strong>運営</strong>：Burnova Project<br>
-        <strong>監修</strong>：米田和弘（医師）<br>
-        熱傷専門医・American Brun Life Support providor・救急科専門医・外科専門医
-      </div>
-
-      <div class="small" style="margin-top:10px;">
-        最終更新：2026年3月23日
-      </div>
-
-      <div class="small" style="margin-top:10px;">
-        参考：熱傷診療ガイドライン（改訂第3版）、銃創・爆傷患者診療指針[ver.1]、ABLS2018（American Burn Life Support）
-      </div>
-
       <p>© Burnova Project / β版</p>
     </footer>
   </main>
@@ -1982,8 +1809,6 @@
   <script>
     (function () {
       const quickNav = document.querySelector('.quick-nav');
-      const quickNavToggle = document.getElementById('quick-nav-toggle');
-      const quickNavLinks = document.querySelectorAll('.quick-nav a[href^="#"]');
 
       function updateAnchorOffset() {
         if (quickNav) {
@@ -1993,17 +1818,6 @@
         }
         document.documentElement.style.setProperty('--anchor-offset', '220px');
         return 220;
-      }
-
-      function closeQuickNavOnMobile() {
-        if (window.innerWidth <= 759 && quickNav) {
-          quickNav.classList.remove('is-open');
-          if (quickNavToggle) {
-            quickNavToggle.setAttribute('aria-expanded', 'false');
-            quickNavToggle.textContent = '目次を開く';
-          }
-          updateAnchorOffset();
-        }
       }
 
       function scrollToHash(hash, isSmooth = true) {
@@ -2017,19 +1831,6 @@
           block: 'start'
         });
       }
-
-      quickNavToggle?.addEventListener('click', function () {
-        const isOpen = quickNav.classList.toggle('is-open');
-        this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        this.textContent = isOpen ? '目次を閉じる' : '目次を開く';
-        setTimeout(updateAnchorOffset, 50);
-      });
-
-      quickNavLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          setTimeout(closeQuickNavOnMobile, 120);
-        });
-      });
 
       updateAnchorOffset();
       window.addEventListener('load', updateAnchorOffset);
