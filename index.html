@@ -150,15 +150,15 @@
     .quick-nav-toggle {
       display: none;
       appearance: none;
-      border: 1px solid rgba(234,108,73,0.22);
-      background: rgba(255,255,255,0.98);
-      color: var(--ink);
+      border: 2.5px solid var(--accent-strong);
+      background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+      color: #fff;
       border-radius: 14px;
       padding: 13px 14px 12px;
       width: 100%;
       font: inherit;
       font-weight: 800;
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 28px rgba(217,88,51,0.32);
       cursor: pointer;
       text-align: left;
       line-height: 1.35;
@@ -168,25 +168,41 @@
       display: block;
       font-size: 1rem;
       font-weight: 800;
+      color: #fff;
     }
 
     .quick-nav-toggle-sub {
       display: block;
       margin-top: 2px;
       font-size: 0.8rem;
-      color: var(--muted);
+      color: rgba(255,255,255,0.82);
       font-weight: 600;
     }
 
     .quick-nav-toggle:active,
     .quick-nav-toggle:hover {
       transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(217,88,51,0.40);
     }
 
     .quick-nav-inner {
       display: grid;
       gap: 12px;
     }
+
+    /* ===== 追加: ナビ全体を囲む枠 ===== */
+    .quick-nav-group {
+      background: rgba(255,255,255,0.82);
+      border: 2.5px solid rgba(234,108,73,0.55);
+      border-radius: 22px;
+      padding: 14px 14px 12px;
+      box-shadow: 0 10px 32px rgba(123,71,40,0.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: grid;
+      gap: 10px;
+    }
+    /* ================================= */
 
     .primary-grid {
       display: grid;
@@ -795,6 +811,19 @@
         gap: 6px;
       }
 
+      /* デスクトップではグループ枠を横並びのピル列に馴染ませる */
+      .quick-nav-group {
+        background: rgba(255,255,255,0.78);
+        border: 2.5px solid rgba(234,108,73,0.55);
+        border-radius: 999px;
+        padding: 8px 14px;
+        box-shadow: 0 6px 18px rgba(123,71,40,0.08);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+
       .primary-grid {
         display: flex;
         flex-wrap: wrap;
@@ -1037,51 +1066,54 @@
         <span class="quick-nav-toggle-sub">タップして応急処置・受診目安・FAQへ移動</span>
       </button>
       <div class="quick-nav-inner" id="quick-nav-inner">
-        <div class="nav-footer">タップして移動</div>
-        <div class="primary-grid">
-          <a class="nav-card" href="#first-aid-detail">
-            <div class="nav-top">
-              <div class="nav-title">応急手当ての手順</div>
-              <div class="nav-emoji" aria-hidden="true">🩹</div>
-            </div>
-          </a>
-          <a class="nav-card" href="#when-to-see">
-            <div class="nav-top">
-              <div class="nav-title">受診の目安</div>
-              <div class="nav-emoji" aria-hidden="true">🏥</div>
-            </div>
-          </a>
-          <a class="nav-card" href="#find-care">
-            <div class="nav-top">
-              <div class="nav-title">受診先を探す</div>
-              <div class="nav-emoji" aria-hidden="true">📍</div>
-            </div>
-          </a>
-          <a class="nav-card" href="#watch-outs">
-            <div class="nav-top">
-              <div class="nav-title">注意点</div>
-              <div class="nav-emoji" aria-hidden="true">⚠️</div>
-            </div>
-          </a>
-          <a class="nav-card" href="#faq-section">
-            <div class="nav-top">
-              <div class="nav-title">FAQ（よくある質問）</div>
-              <div class="nav-emoji" aria-hidden="true">❓</div>
-            </div>
-            
-          </a>
-          <a class="nav-card" href="#top">
-            <div class="nav-top">
-              <div class="nav-title">上部へ戻る</div>
-              <div class="nav-emoji" aria-hidden="true">⬆️</div>
-            </div>
-          </a>
+        <!-- ▼ 枠で囲むグループ開始 -->
+        <div class="quick-nav-group">
+          <div class="nav-footer">タップして移動</div>
+          <div class="primary-grid">
+            <a class="nav-card" href="#first-aid-detail">
+              <div class="nav-top">
+                <div class="nav-title">応急手当ての手順</div>
+                <div class="nav-emoji" aria-hidden="true">🩹</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#when-to-see">
+              <div class="nav-top">
+                <div class="nav-title">受診の目安</div>
+                <div class="nav-emoji" aria-hidden="true">🏥</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#find-care">
+              <div class="nav-top">
+                <div class="nav-title">受診先を探す</div>
+                <div class="nav-emoji" aria-hidden="true">📍</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#watch-outs">
+              <div class="nav-top">
+                <div class="nav-title">注意点</div>
+                <div class="nav-emoji" aria-hidden="true">⚠️</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#faq-section">
+              <div class="nav-top">
+                <div class="nav-title">FAQ（よくある質問）</div>
+                <div class="nav-emoji" aria-hidden="true">❓</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#top">
+              <div class="nav-top">
+                <div class="nav-title">上部へ戻る</div>
+                <div class="nav-emoji" aria-hidden="true">⬆️</div>
+              </div>
+            </a>
+          </div>
+          <div class="survey-nav-row">
+            <button class="survey-nav-card nav-cta" type="button" id="survey-nav-trigger">
+              <strong>1分アンケート（任意）</strong><span>タップで回答</span>
+            </button>
+          </div>
         </div>
-        <div class="survey-nav-row">
-          <button class="survey-nav-card nav-cta" type="button" id="survey-nav-trigger">
-            <strong>1分アンケート（任意）</strong><span>タップで回答</span>
-          </button>
-        </div>
+        <!-- ▲ 枠で囲むグループ終了 -->
       </div>
     </nav>
 
