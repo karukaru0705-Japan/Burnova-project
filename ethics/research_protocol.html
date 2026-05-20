@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>研究計画書｜熱傷情報アプリを用いた市民行動解析およびAI診断支援システムの開発</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #555;
+      --line: #ccc;
+      --bg: #fff;
+      --accent: #004080;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "MS Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 10.5pt;
+      line-height: 1.85;
+      color: var(--ink);
+      background: var(--bg);
+      padding: 0;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 25mm 22mm 25mm 25mm;
+    }
+    h1.doc-title {
+      font-size: 14pt;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 6mm;
+      letter-spacing: 0.08em;
+    }
+    h2.section {
+      font-size: 11.5pt;
+      font-weight: bold;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      margin: 8mm 0 3mm 0;
+    }
+    h3.subsection {
+      font-size: 10.5pt;
+      font-weight: bold;
+      margin: 5mm 0 2mm 0;
+    }
+    p { margin: 2mm 0; }
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 4mm 0 6mm 0;
+      font-size: 10pt;
+    }
+    .meta-table th, .meta-table td {
+      border: 1px solid var(--line);
+      padding: 3mm 4mm;
+      vertical-align: top;
+    }
+    .meta-table th {
+      background: #f0f4f8;
+      width: 32%;
+      font-weight: bold;
+    }
+    .survey-items {
+      margin: 2mm 0 2mm 6mm;
+      list-style: none;
+      padding: 0;
+    }
+    .survey-items li {
+      padding: 1.5mm 0;
+      border-bottom: 0.5px solid #eee;
+    }
+    .survey-items li:last-child { border-bottom: none; }
+    .note {
+      background: #f8f8f8;
+      border-left: 3px solid #aaa;
+      padding: 3mm 4mm;
+      font-size: 9.5pt;
+      color: var(--muted);
+      margin: 3mm 0;
+    }
+    .phase-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 8pt;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      font-family: sans-serif;
+    }
+    .checklist {
+      margin: 2mm 0 2mm 6mm;
+    }
+    .checklist li {
+      list-style: none;
+      padding: 1.5mm 0;
+    }
+    .checklist li::before {
+      content: "□ ";
+      font-size: 11pt;
+    }
+    .sign-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6mm 0;
+    }
+    .sign-table td {
+      border: 1px solid var(--line);
+      padding: 3mm 4mm;
+      height: 20mm;
+      vertical-align: top;
+      width: 33%;
+    }
+    .sign-label {
+      font-size: 9pt;
+      color: var(--muted);
+    }
+    .page-break { page-break-before: always; }
+    hr.section-rule { border: none; border-top: 2px solid var(--ink); margin: 6mm 0 4mm 0; }
+    @media print {
+      body { padding: 0; }
+      .page { margin: 0; box-shadow: none; }
+      .no-print { display: none; }
+    }
+    @media screen {
+      body { background: #e8e8e8; }
+      .page {
+        background: white;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+        margin: 16px auto;
+      }
+    }
+    .version-note {
+      text-align: right;
+      font-size: 9pt;
+      color: var(--muted);
+      margin-bottom: 4mm;
+      font-family: sans-serif;
+    }
+    .indent { margin-left: 6mm; }
+    .indent2 { margin-left: 12mm; }
+    ol.numbered { margin-left: 6mm; }
+    ol.numbered li { margin: 1.5mm 0; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <p class="version-note">版番号：第1.0版　作成日：2026年5月　【ドラフト】</p>
+
+  <h1 class="doc-title">
+    研究計画書<br>
+    <span style="font-size:12pt;">熱傷情報啓発アプリ（Burnova）の利用者データを用いた<br>
+    市民の熱傷対応行動解析および<br>
+    AIによる熱傷範囲・深度自動診断システムの開発</span>
+  </h1>
+
+  <!-- 署名欄 -->
+  <table class="sign-table">
+    <tr>
+      <td>
+        <span class="sign-label">研究責任者</span><br><br>
+        所属：<br>氏名：　　　　　　　　印<br>
+      </td>
+      <td>
+        <span class="sign-label">所属長（診療科長等）</span><br><br>
+        所属：<br>氏名：　　　　　　　　印<br>
+      </td>
+      <td>
+        <span class="sign-label">研究機関の長</span><br><br>
+        大阪大学医学部附属病院長<br>氏名：　　　　　　　　印<br>
+      </td>
+    </tr>
+  </table>
+
+  <!-- 基本情報 -->
+  <table class="meta-table">
+    <tr>
+      <th>研究課題名</th>
+      <td>熱傷情報啓発アプリ（Burnova）の利用者データを用いた市民の熱傷対応行動解析および AIによる熱傷範囲・深度自動診断システムの開発</td>
+    </tr>
+    <tr>
+      <th>研究種別</th>
+      <td>観察研究（既存情報活用研究）／AIシステム開発研究</td>
+    </tr>
+    <tr>
+      <th>倫理指針</th>
+      <td>人を対象とする生命科学・医学系研究に関する倫理指針（令和3年文部科学省・厚生労働省・経済産業省告示第1号）</td>
+    </tr>
+    <tr>
+      <th>研究機関（主任）</th>
+      <td>大阪大学医学部附属病院　（診療科名：　　　　　　　　）</td>
+    </tr>
+    <tr>
+      <th>共同研究機関</th>
+      <td>独立行政法人地域医療機能推進機構（JCHO）中京病院</td>
+    </tr>
+    <tr>
+      <th>研究実施期間</th>
+      <td>倫理審査承認日 〜 2028年3月31日（予定）</td>
+    </tr>
+    <tr>
+      <th>フェーズ構成</th>
+      <td>
+        <strong>フェーズ1：</strong>Burnovaアプリ利用者アンケートデータの解析・学会発表<br>
+        <strong>フェーズ2：</strong>JCHO中京病院熱傷患者画像を用いたAI診断システム開発
+      </td>
+    </tr>
+  </table>
+
+  <!-- 1. 研究背景・目的 -->
+  <h2 class="section">1．研究背景と目的</h2>
+
+  <h3 class="subsection">1.1 研究背景</h3>
+  <p>
+    熱傷（やけど）は日常生活の中で最も頻繁に発生する外傷の一つであり、
+    適切な初期対応が予後に大きな影響を与える。
+    しかしながら、一般市民の熱傷に対する知識・対応行動は十分でなく、
+    誤った処置（醤油・味噌の塗布、過度の冷却など）が依然として行われているとの報告がある。
+  </p>
+  <p>
+    研究代表者らは市民向け熱傷情報啓発ウェブアプリケーション「Burnova」
+    （URL：<span style="font-family:monospace;">https://burnova.vercel.app/</span>）を開発・公開し、
+    運用を継続している。同アプリには、利用者の属性・行動変容を把握するための
+    任意参加型アンケート機能が実装されており、匿名データが蓄積されている。
+    このデータは、一般市民の熱傷対応の実態と情報ツールの効果を評価する上で有用な資源である。
+  </p>
+  <p>
+    一方、熱傷診療においては、受傷直後の熱傷範囲（体表面積比）および深度（Ⅰ度〜Ⅲ度）の
+    正確な評価が治療方針決定に不可欠である。しかし、その評価は専門家間でも
+    一定のばらつきがあり、遠隔・一次医療での評価精度向上が求められている。
+    近年の深層学習（deep learning）技術の発展により、医療画像解析AIの有用性が
+    報告されており、熱傷評価への応用が期待されている。
+  </p>
+
+  <h3 class="subsection">1.2 研究目的</h3>
+  <p><span class="phase-badge">フェーズ1</span>
+    Burnovaアプリのアンケートデータを解析し、一般市民の熱傷発生状況・対応行動・
+    情報ツール利用実態を明らかにし、公衆衛生的観点からの啓発活動の有効性を検討する。
+  </p>
+  <p><span class="phase-badge">フェーズ2</span>
+    JCHO中京病院において診療を受けた熱傷患者の臨床画像データを用い、
+    熱傷の範囲（TBSA）および深度を自動評価するAI（深層学習）モデルを開発・検証する。
+  </p>
+
+  <!-- 2. 研究方法 -->
+  <h2 class="section">2．研究方法</h2>
+
+  <h3 class="subsection">2.1 フェーズ1：アンケートデータ解析</h3>
+
+  <p><strong>対象データ：</strong></p>
+  <p class="indent">
+    Burnovaアプリ（https://burnova.vercel.app/）の利用者が任意で回答したアンケートデータ。
+    同アプリのアンケート説明文には「回答は匿名で集計し、研究発表等に活用する場合があります」と
+    明示しており、利用者はこれを了解の上で回答している。
+  </p>
+
+  <p style="margin-top:3mm;"><strong>収集項目：</strong></p>
+  <ul class="survey-items">
+    <li>① アプリが役に立ったか（はい／いいえ）</li>
+    <li>② 満足度（1〜5段階スコア）</li>
+    <li>③ 利用者の関係（本人／親／家族／友人・知人／その他）</li>
+    <li>④ 被傷者の年齢区分（乳幼児〜6歳／小中学生〜15歳／高校生以上〜64歳／シニア65歳以上）</li>
+    <li>⑤ 熱傷原因（火炎／高温液体／高温気体／化学薬品／電気・電撃／その他）</li>
+    <li>⑥ 閲覧後の行動変容（救急車・受診・自宅観察・参考にとどまった）</li>
+    <li>⑦ 都道府県（任意）</li>
+    <li>⑧ 熱傷部位（顔面・頭頸部／手／足／体幹部／陰部／その他、複数選択可）</li>
+    <li>⑨ 情報の信頼性評価（1〜5段階スコア）</li>
+    <li>⑩ 自由記述（追加してほしい機能・改善点）</li>
+  </ul>
+  <div class="note">
+    ※ 氏名・連絡先・IPアドレス等の直接識別情報は収集していない。
+    回答データは Google Forms を経由して収集・保管されている。
+  </div>
+
+  <p style="margin-top:3mm;"><strong>解析方法：</strong></p>
+  <ol class="numbered">
+    <li>記述統計（回答数、各項目の頻度分布・割合）</li>
+    <li>クロス集計（年齢区分×原因、行動変容×満足度 等）</li>
+    <li>地域分布（都道府県別回答数）</li>
+    <li>自由記述の質的分析（テキストマイニングまたはカテゴリー分類）</li>
+    <li>経時変化の検討（月別・期間別回答傾向）</li>
+  </ol>
+
+  <h3 class="subsection">2.2 フェーズ2：AI診断システム開発</h3>
+
+  <p><strong>対象患者・データ：</strong></p>
+  <p class="indent">
+    JCHO中京病院に熱傷で受診・入院した患者（過去分：後ろ向き、
+    および本研究承認後の前向き収集）。
+    氏名・生年月日・住所等の直接識別情報は除去した上でデータ提供を受ける。
+  </p>
+
+  <p style="margin-top:3mm;"><strong>選択基準：</strong></p>
+  <ul class="checklist">
+    <li>熱傷（熱傷ICD-10：T20〜T32）と診断された患者</li>
+    <li>受傷部位の臨床写真が診療録に存在する</li>
+    <li>年齢制限なし（小児含む）</li>
+  </ul>
+
+  <p><strong>除外基準：</strong></p>
+  <ul class="checklist">
+    <li>画像が診断評価に使用できない品質（ピンボケ、照明不良等）</li>
+    <li>化学・電撃・放射線熱傷で熱傷深度評価が困難なもの（解析から除外可）</li>
+    <li>研究参加を拒否した患者（オプトアウト実施後）</li>
+  </ul>
+
+  <p style="margin-top:3mm;"><strong>収集データ項目：</strong></p>
+  <ol class="numbered">
+    <li>臨床写真（受傷時・処置時・経過観察時）</li>
+    <li>熱傷部位・面積（TBSA：%BSA）― 専門医評価（教師データ）</li>
+    <li>熱傷深度（Ⅰ度・Ⅱ度浅達性・Ⅱ度深達性・Ⅲ度）― 専門医評価（教師データ）</li>
+    <li>年齢（10歳刻みの区分値）、性別</li>
+    <li>受傷原因（火炎・熱湯・高温固体・電気・化学薬品 等）</li>
+  </ol>
+
+  <p style="margin-top:3mm;"><strong>AI開発方法：</strong></p>
+  <ol class="numbered">
+    <li>専門医による熱傷範囲・深度のアノテーション（教師ラベル作成）</li>
+    <li>深層学習モデル（CNN、セグメンテーション系：U-Net等）の構築</li>
+    <li>訓練・検証・テスト分割（例：70%／15%／15%）によるモデル評価</li>
+    <li>評価指標：Dice係数（範囲推定）、感度・特異度・AUC（深度分類）</li>
+    <li>専門医評価との一致率（Cohen's κ）の算出</li>
+  </ol>
+
+</div><!-- end page 1 -->
+
+<div class="page page-break">
+
+  <!-- 3. 研究対象者への説明と同意 -->
+  <h2 class="section">3．研究対象者への説明とインフォームドコンセント</h2>
+
+  <h3 class="subsection">3.1 フェーズ1（アンケートデータ）</h3>
+  <p>
+    Burnovaアプリのアンケートは利用者が任意で回答するものであり、
+    回答前に「回答は匿名で集計し、研究発表等に活用する場合があります」と
+    アプリ上に明示している。これをもって広義の同意取得とみなす。
+  </p>
+  <p>
+    ただし、倫理委員会の判断によっては以下の措置を取る：
+  </p>
+  <ul class="checklist">
+    <li>アプリ上に本研究の概要・研究責任者・問い合わせ先を掲載するオプトアウト通知の追加</li>
+    <li>研究実施期間中の新規回答者に対し、より明確な研究利用の説明を追加</li>
+  </ul>
+  <div class="note">
+    ※ データは匿名化されており個人特定が不可能なため、
+    文書によるインフォームドコンセントの免除を申請する（倫理指針第5章第12参照）。
+  </div>
+
+  <h3 class="subsection">3.2 フェーズ2（患者画像データ）</h3>
+  <p>
+    JCHO中京病院において、以下の手順でインフォームドコンセントに関する対応を行う：
+  </p>
+  <p><strong>後ろ向き収集分（既存診療データ）：</strong></p>
+  <ol class="numbered">
+    <li>JCHO中京病院の倫理審査委員会において当該研究を審査・承認を得る（共同研究審査）</li>
+    <li>JCHO中京病院の病院内（外来・病棟・ウェブサイト）において、
+    オプトアウト用の研究情報掲示を行う</li>
+    <li>掲示期間終了後、オプトアウトが確認されなかった患者のデータを解析対象とする</li>
+    <li>解析前に氏名・生年月日・ID等の直接識別情報を削除する</li>
+  </ol>
+  <p style="margin-top:2mm;"><strong>前向き収集分（承認後）：</strong></p>
+  <ol class="numbered">
+    <li>研究参加の説明文書を用いて書面によるインフォームドコンセントを取得する</li>
+    <li>同意撤回は任意でいつでも可能とし、撤回後はデータを解析に使用しない</li>
+  </ol>
+
+  <!-- 4. 個人情報の保護 -->
+  <h2 class="section">4．個人情報の取り扱いと情報管理</h2>
+
+  <table class="meta-table">
+    <tr>
+      <th>フェーズ1<br>データ管理</th>
+      <td>
+        Google Forms で収集された匿名データを研究責任者の管理するセキュアな環境（
+        パスワード保護されたクラウドストレージまたは院内サーバー）に移管・保存する。
+        研究終了後5年間保存し、その後適切に廃棄する。
+      </td>
+    </tr>
+    <tr>
+      <th>フェーズ2<br>データ管理</th>
+      <td>
+        JCHO中京病院から大阪大学へのデータ提供は、施設間のデータ提供契約書に基づき行う。
+        提供データは直接識別情報を除去した上で、研究専用のパスワード保護サーバーに格納する。
+        アクセス権は研究者リストに登録された者のみに付与する。
+      </td>
+    </tr>
+    <tr>
+      <th>匿名化方針</th>
+      <td>
+        フェーズ1：収集時点から匿名（氏名・連絡先等は収集しない）。<br>
+        フェーズ2：JCHO中京病院にてk-匿名化処理（患者ID→連番変換）を実施後に提供。
+        顔・タトゥー等の識別情報は画像マスキング処理を行う。
+      </td>
+    </tr>
+    <tr>
+      <th>第三者提供</th>
+      <td>
+        本研究の目的以外には使用しない。
+        学術論文・学会発表においては個人を特定できる情報を含まない形でのみ公表する。
+      </td>
+    </tr>
+    <tr>
+      <th>試料・情報の<br>保管期間</th>
+      <td>研究終了後5年間（または論文掲載後5年間のうち長い方）保存後、廃棄する。</td>
+    </tr>
+  </table>
+
+  <!-- 5. 研究の倫理的配慮 -->
+  <h2 class="section">5．研究に伴うリスクと倫理的配慮</h2>
+
+  <h3 class="subsection">5.1 研究対象者へのリスク</h3>
+  <p>
+    本研究はいずれのフェーズも介入を行わない観察研究・既存データ解析であり、
+    研究参加に伴う身体的リスクはない。
+  </p>
+  <p>
+    フェーズ2において患者の臨床画像を使用するが、厳重な匿名化処理を行うため、
+    プライバシー侵害のリスクは最小化される。
+    万一データ漏洩が生じた場合には、直ちに所属機関に報告し対処する。
+  </p>
+
+  <h3 class="subsection">5.2 研究の社会的意義と利益</h3>
+  <p>
+    フェーズ1の成果は、熱傷啓発活動の改善と市民の熱傷対応向上に資するものであり、
+    公衆衛生上の意義がある。
+    フェーズ2の AI 診断システムは、専門医が不在の一次医療機関や救急現場における
+    熱傷評価の質を向上させ、適切な患者搬送・治療選択に貢献することが期待される。
+  </p>
+
+  <h3 class="subsection">5.3 利益相反（COI）の申告</h3>
+  <p>
+    本研究に関連する利益相反の有無について、各研究者は所属機関の COI 申告規程に基づき
+    申告を行う。現時点で申告すべき利益相反は
+    □ない　□ある（内容：　　　　　　　　　　　　　　　）。
+  </p>
+
+  <!-- 6. 研究体制 -->
+  <h2 class="section">6．研究体制・役割分担</h2>
+
+  <table class="meta-table">
+    <tr>
+      <th>研究責任者</th>
+      <td>
+        大阪大学医学部附属病院<br>
+        所属：　　　　　　　　診療科<br>
+        氏名：　　　　　　　　（医籍番号：　　　　　）<br>
+        連絡先：　　　　　　　＠med.osaka-u.ac.jp
+      </td>
+    </tr>
+    <tr>
+      <th>研究分担者<br>（大阪大学）</th>
+      <td>
+        氏名：　　　　　　　　　役割：データ解析・AI開発<br>
+        氏名：　　　　　　　　　役割：熱傷評価・アノテーション<br>
+        ※ 詳細は別紙「研究者リスト」参照
+      </td>
+    </tr>
+    <tr>
+      <th>共同研究者<br>（JCHO中京病院）</th>
+      <td>
+        JCHO中京病院<br>
+        氏名：　　　　　　　　　役割：患者データ提供・アノテーション監修<br>
+        ※ JCHO中京病院倫理審査委員会への申請は当該施設研究責任者が行う
+      </td>
+    </tr>
+    <tr>
+      <th>統計解析担当</th>
+      <td>　　　　　　　　（所属：　　　　　）</td>
+    </tr>
+  </table>
+
+</div><!-- end page 2 -->
+
+<div class="page page-break">
+
+  <!-- 7. 研究資金 -->
+  <h2 class="section">7．研究資金・費用負担</h2>
+  <table class="meta-table">
+    <tr>
+      <th>研究費の出所</th>
+      <td>
+        □ 自己資金（研究費なし）<br>
+        □ 科研費（課題番号：　　　　　　　）<br>
+        □ その他外部資金（資金源：　　　　　　　　）
+      </td>
+    </tr>
+    <tr>
+      <th>研究対象者への<br>補償</th>
+      <td>
+        フェーズ1：該当なし（匿名アンケートのため補償不要）<br>
+        フェーズ2：通常の診療費以外の費用負担はなし。健康被害は生じない観察研究のため補償保険の加入は不要と判断するが、倫理審査委員会の指示に従う。
+      </td>
+    </tr>
+  </table>
+
+  <!-- 8. 研究成果の公表 -->
+  <h2 class="section">8．研究成果の公表方針</h2>
+  <p>
+    本研究の成果は、国内外の学術雑誌への論文投稿および学術学会（日本熱傷学会等）での
+    発表を通じて公表する予定である。公表に際しては個人を特定できる情報を含まない。
+    AI モデルのコードは条件を整えた上でオープンソース公開を検討する。
+  </p>
+  <p>
+    研究対象者（フェーズ2）への結果の開示については、
+    開示を希望した患者には適切な方法で結果の概要を伝える機会を設ける。
+  </p>
+
+  <!-- 9. 重篤な有害事象への対応 -->
+  <h2 class="section">9．有害事象・不適合事案への対応</h2>
+  <p>
+    本研究は身体介入を伴わないため重篤な有害事象の発生は想定されないが、
+    プライバシー侵害・データ漏洩等の事案が生じた場合には、
+    直ちに研究責任者・研究機関の長に報告し、倫理審査委員会に不適合報告を行う。
+  </p>
+
+  <!-- 10. スケジュール -->
+  <h2 class="section">10．研究スケジュール（予定）</h2>
+  <table class="meta-table">
+    <tr>
+      <th>倫理審査申請</th>
+      <td>2026年5〜6月</td>
+    </tr>
+    <tr>
+      <th>フェーズ1<br>データ解析開始</th>
+      <td>倫理審査承認後 速やかに（2026年7月〜）</td>
+    </tr>
+    <tr>
+      <th>フェーズ1<br>学会発表</th>
+      <td>2026年度内（日本熱傷学会等）</td>
+    </tr>
+    <tr>
+      <th>フェーズ2<br>データ収集・AI開発</th>
+      <td>2026年8月〜2027年12月</td>
+    </tr>
+    <tr>
+      <th>フェーズ2<br>論文投稿</th>
+      <td>2028年3月 予定</td>
+    </tr>
+  </table>
+
+  <!-- 11. 参考文献 -->
+  <h2 class="section">11．参考文献（主要）</h2>
+  <ol class="numbered" style="font-size:9.5pt;">
+    <li>文部科学省・厚生労働省・経済産業省「人を対象とする生命科学・医学系研究に関する倫理指針」（令和3年）</li>
+    <li>日本熱傷学会「熱傷診療ガイドライン（改訂第3版）」（2021年）</li>
+    <li>Esteva A, et al. Dermatologist-level classification of skin cancer with deep neural networks. Nature. 2017;542:115-118.</li>
+    <li>Shen D, et al. Deep Learning in Medical Image Analysis. Annu Rev Biomed Eng. 2017;19:221-248.</li>
+    <li>（その他、関連先行研究を追加）</li>
+  </ol>
+
+  <!-- 12. 変更履歴 -->
+  <h2 class="section">12．改訂履歴</h2>
+  <table class="meta-table">
+    <tr>
+      <th>版番号</th>
+      <th>改訂日</th>
+      <th>改訂内容</th>
+    </tr>
+    <tr>
+      <td>第1.0版</td>
+      <td>2026年5月</td>
+      <td>初版作成</td>
+    </tr>
+  </table>
+
+  <div class="note" style="margin-top:8mm;">
+    <strong>【申請者へのメモ】</strong><br>
+    ・「　　　」箇所はすべて記入が必要です。<br>
+    ・研究者リスト（様式）、チェックリスト（様式）は大阪大学医学部附属病院倫理審査委員会の所定書式を別途使用してください。<br>
+    ・JCHO中京病院については、当該病院の倫理審査委員会への申請（または一括審査の申請）が別途必要です。<br>
+    ・フェーズ2のオプトアウト文書（患者向け掲示文）は別ファイル（optout_notice.html）を参照してください。<br>
+    ・電子申請システム（自主臨床研究電子申請システム）への登録時は本書を PDF として提出してください。
+  </div>
+
+</div><!-- end page 3 -->
+
+</body>
+</html>

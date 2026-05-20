@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>倫理申請チェックリスト｜Burnova熱傷AI研究</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "MS Gothic", "Yu Gothic", "Hiragino Sans", sans-serif;
+      font-size: 10pt;
+      line-height: 1.75;
+      color: #1a1a1a;
+      background: #fff;
+    }
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 20mm 20mm 20mm 22mm;
+    }
+    h1 {
+      font-size: 13pt;
+      text-align: center;
+      margin-bottom: 6mm;
+    }
+    h2 {
+      font-size: 11pt;
+      background: #003070;
+      color: white;
+      padding: 2mm 4mm;
+      margin: 7mm 0 3mm 0;
+    }
+    h3 {
+      font-size: 10pt;
+      font-weight: bold;
+      border-left: 4px solid #003070;
+      padding-left: 3mm;
+      margin: 5mm 0 2mm 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2mm 0 4mm 0;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #bbb;
+      padding: 2mm 3mm;
+      vertical-align: middle;
+    }
+    th { background: #eef2f7; text-align: center; }
+    .check-col { width: 12mm; text-align: center; font-size: 13pt; }
+    .required { color: #cc0000; font-weight: bold; }
+    .optional { color: #777; }
+    .note-row td { background: #fffbe6; font-size: 9pt; color: #555; }
+    .status-todo { color: #cc0000; }
+    .status-done { color: #006600; }
+    p.note { font-size: 9pt; color: #666; margin: 1mm 0; }
+    @media screen {
+      body { background: #ddd; }
+      .page { background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.12); margin: 16px auto; }
+    }
+    @media print {
+      body { background: white; }
+      .page { margin: 0; }
+    }
+    .legend { font-size: 9pt; margin: 4mm 0 6mm 0; }
+    .legend span { margin-right: 8mm; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>倫理申請書類チェックリスト<br>
+  <span style="font-size:10pt;font-weight:normal;">熱傷情報啓発アプリ（Burnova）研究 ／ 大阪大学医学部附属病院倫理審査委員会申請</span>
+  </h1>
+
+  <div class="legend">
+    <span><strong>【必】</strong> = 必須提出書類</span>
+    <span><strong>【条】</strong> = 条件による（審査区分・研究内容により必要）</span>
+    <span><strong>□</strong> = 未完了　<strong>☑</strong> = 完了</span>
+  </div>
+
+  <!-- ===== PHASE 1 ===== -->
+  <h2>A. フェーズ1：Burnovaアンケートデータ解析（学会発表）</h2>
+
+  <h3>A-1. 倫理審査委員会への提出書類</h3>
+  <table>
+    <tr>
+      <th class="check-col">チェック</th>
+      <th style="width:40%;">書類名</th>
+      <th>内容・留意点</th>
+      <th style="width:8%;">区分</th>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>研究計画書（プロトコール）</strong></td>
+      <td>research_protocol.html（フェーズ1部分）を印刷・PDF化。版番号・日付を記入</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>申請書（チェックリスト・様式）</strong></td>
+      <td>大阪大学医学部附属病院所定の新規申請チェックリスト様式を記入（委員会ウェブから入手）</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>研究者リスト（様式）</strong></td>
+      <td>研究責任者・分担者全員を記載。GCP研修修了証の添付が必要な場合あり</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>オプトアウト通知文</td>
+      <td>
+        Burnovaアプリ内に研究利用の旨を明示するための通知文。
+        現行アプリには「研究発表等に活用する場合があります」と記載済みだが、
+        委員会の指示により詳細通知文の追加が必要になる場合あり
+      </td>
+      <td class="optional">【条】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>個人情報保護・データ管理計画書</td>
+      <td>匿名データの保管場所・アクセス権・廃棄方法を記載（研究計画書に含める形でも可）</td>
+      <td class="optional">【条】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>利益相反申告書</td>
+      <td>研究責任者・分担者全員分。所属機関の COI 申告規程に従う</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr class="note-row">
+      <td colspan="4">
+        ※ フェーズ1は介入なし・匿名データのため「簡易審査（迅速審査）」の対象となる可能性あり。
+        申請前に事務局（rinri@hp-crc.med.osaka-u.ac.jp）に相談することを推奨。
+      </td>
+    </tr>
+  </table>
+
+  <h3>A-2. 研究機関の長への申請・承認</h3>
+  <table>
+    <tr>
+      <th class="check-col">チェック</th>
+      <th style="width:40%;">手続き</th>
+      <th>内容</th>
+      <th style="width:8%;">区分</th>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>研究機関の長（病院長）への研究実施申請</td>
+      <td>倫理審査承認後、病院長の承認を得てから研究開始</td>
+      <td class="required">【必】</td>
+    </tr>
+  </table>
+
+  <!-- ===== PHASE 2 ===== -->
+  <h2>B. フェーズ2：JCHO中京病院患者画像を用いたAI開発</h2>
+
+  <h3>B-1. 大阪大学医学部附属病院倫理審査委員会への提出書類</h3>
+  <table>
+    <tr>
+      <th class="check-col">チェック</th>
+      <th style="width:40%;">書類名</th>
+      <th>内容・留意点</th>
+      <th style="width:8%;">区分</th>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>研究計画書（プロトコール）</strong></td>
+      <td>research_protocol.html（フェーズ2部分）。フェーズ1と一括または別途申請。AI開発の方法論を詳記</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>申請書・新規申請チェックリスト</strong></td>
+      <td>大阪大学医学部附属病院所定様式</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>研究者リスト（様式）</strong></td>
+      <td>大阪大学・JCHO中京病院双方の研究者を記載</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>オプトアウト掲示文書</strong></td>
+      <td>optout_notice.html を使用。JCHO中京病院の外来・病棟・ウェブに掲示</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>前向き収集分の同意説明文書・同意書</td>
+      <td>承認後に新規受診する患者向け。書面同意。委員会承認の書式で作成</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>同意撤回書</td>
+      <td>研究参加を撤回する際の書式</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>多施設共同研究に関する情報</strong></td>
+      <td>共同研究機関（JCHO中京病院）の情報・倫理審査状況を記載</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>他の研究機関への試料・情報の提供に関する届出書（様式2-2）</td>
+      <td>JCHO中京病院から大阪大学へのデータ提供に関する届出</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>利益相反申告書（全研究者分）</td>
+      <td></td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>データ匿名化・セキュリティ管理計画</td>
+      <td>患者画像の匿名化方法・保管場所・アクセス制限を詳記</td>
+      <td class="optional">【条】</td>
+    </tr>
+  </table>
+
+  <h3>B-2. JCHO中京病院への手続き（当院研究担当者と連携）</h3>
+  <table>
+    <tr>
+      <th class="check-col">チェック</th>
+      <th style="width:40%;">手続き</th>
+      <th>内容</th>
+      <th style="width:8%;">区分</th>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>JCHO中京病院倫理審査委員会への申請</strong></td>
+      <td>共同研究機関として独立した倫理審査が必要。または大阪大学での一括審査手続きを確認</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>JCHO中京病院での研究責任者・分担者の設置</td>
+      <td>当院の倫理審査規程に基づく研究者の選任</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td><strong>施設間データ提供契約書の締結</strong></td>
+      <td>大阪大学とJCHO中京病院間のデータ共有・利用条件を定めた契約書。法務・事務部門を通じて締結</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>オプトアウト掲示の実施</td>
+      <td>JCHO中京病院の外来・入院病棟・ウェブサイトへの掲示。掲示期間（最低3ヶ月程度）を確保</td>
+      <td class="required">【必】</td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>JCHO中京病院病院長への研究実施申請</td>
+      <td>倫理審査承認後に当該施設長の承認を得る</td>
+      <td class="required">【必】</td>
+    </tr>
+  </table>
+
+  <!-- ===== 進捗管理 ===== -->
+  <h2>C. 全体進捗管理</h2>
+  <table>
+    <tr>
+      <th class="check-col">チェック</th>
+      <th style="width:40%;">タスク</th>
+      <th>期限（目安）</th>
+      <th style="width:8%;">担当</th>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>研究計画書ドラフト完成・研究責任者確認</td>
+      <td>2026年5月末</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>所属長（診療科長）のサイン取得</td>
+      <td>2026年5月末</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>倫理審査委員会事務局へ事前相談</td>
+      <td>2026年6月上旬</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>大阪大学 倫理審査委員会へ申請（フェーズ1・2）</td>
+      <td>2026年6月中旬</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>JCHO中京病院 倫理審査委員会へ申請</td>
+      <td>2026年6月〜7月</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>施設間データ提供契約書の締結</td>
+      <td>2026年7月</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>フェーズ1 データ解析開始</td>
+      <td>2026年7〜8月</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>オプトアウト掲示開始（JCHO中京病院）</td>
+      <td>2026年7月</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>フェーズ2 データ収集開始</td>
+      <td>2026年8〜9月以降</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="check-col">□</td>
+      <td>日本熱傷学会（または関連学会）への演題登録（フェーズ1）</td>
+      <td>2026年度内</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h2>D. 問い合わせ先</h2>
+  <table>
+    <tr>
+      <th style="width:30%;">大阪大学医学部附属病院<br>倫理審査委員会事務局</th>
+      <td>
+        教育研究支援課 研究支援係<br>
+        Mail: rinri@hp-crc.med.osaka-u.ac.jp<br>
+        TEL: 06-6210-8296<br>
+        〒565-0871 大阪府吹田市山田丘2番2号 最先端医療イノベーションセンター棟4階
+      </td>
+    </tr>
+    <tr>
+      <th>研究機関の長手続き<br>（多施設・一括審査）</th>
+      <td>
+        大阪大学医学部附属病院 未来医療開発部<br>
+        Mail: rin-sokatu@dmi.med.osaka-u.ac.jp
+      </td>
+    </tr>
+  </table>
+
+  <p class="note" style="margin-top:5mm;">
+    ※ 本チェックリストは2026年5月時点のドラフトです。審査委員会への事前相談後、最新の様式・要件に合わせて更新してください。
+  </p>
+
+</div>
+</body>
+</html>
