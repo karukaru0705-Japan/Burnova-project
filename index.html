@@ -117,24 +117,99 @@
       font-size: 1rem;
     }
 
-    .notice-list {
+    .notice-steps {
+      display: grid;
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+
+    .notice-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 13px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(239,211,138,0.55);
+      border-radius: 14px;
+    }
+
+    .notice-step-icon {
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: var(--warn);
+      border: 1px solid var(--warn-line);
+      border-radius: 11px;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .notice-step-body {
+      flex: 1 1 auto;
+      display: block;
+    }
+
+    .notice-step-headline {
+      display: block;
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.35;
+      margin-bottom: 2px;
+    }
+
+    .notice-step-detail {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .notice-call {
+      margin-top: 12px;
+      padding: 13px 14px;
+      background: var(--danger);
+      border: 1px solid var(--danger-line);
+      border-radius: 14px;
+    }
+
+    .notice-call-headline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--accent-strong);
+      font-size: 1rem;
+    }
+
+    .notice-call-headline-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .notice-call-list {
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    .notice-list > li {
-      margin: 8px 0;
+    .notice-call-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 6px 0;
+      font-size: 0.92rem;
+      line-height: 1.45;
     }
 
-    .notice-sublist {
-      list-style: none;
-      margin: 6px 0 0 1.2em;
-      padding: 0;
-    }
-
-    .notice-sublist li {
-      margin: 4px 0;
+    .notice-call-list li::before {
+      content: "•";
+      color: var(--accent-strong);
+      font-weight: 800;
+      flex: 0 0 auto;
+      line-height: 1.45;
     }
 
     .quick-nav {
@@ -150,11 +225,13 @@
     .quick-nav-toggle {
       display: none;
       appearance: none;
+      position: relative;
+      overflow: hidden;
       border: 2.5px solid var(--accent-strong);
       background: linear-gradient(180deg, var(--accent), var(--accent-strong));
       color: #fff;
       border-radius: 14px;
-      padding: 13px 14px 12px;
+      padding: 13px 44px 12px 14px;
       width: 100%;
       font: inherit;
       font-weight: 800;
@@ -162,6 +239,41 @@
       cursor: pointer;
       text-align: left;
       line-height: 1.35;
+    }
+
+    .quick-nav-toggle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -60%;
+      width: 50%;
+      background: linear-gradient(
+        100deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .quick-nav-toggle::after {
+      content: "▼";
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      font-size: 0.95rem;
+      line-height: 1;
+      transform: translateY(-50%);
+      transition: transform 0.25s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .quick-nav.is-open .quick-nav-toggle::after {
+      transform: translateY(-50%) rotate(180deg);
     }
 
     .quick-nav-toggle strong {
@@ -183,6 +295,26 @@
     .quick-nav-toggle:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 32px rgba(217,88,51,0.40);
+    }
+
+    @keyframes quick-nav-shimmer {
+      0%   { left: -60%; opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { left: 130%; opacity: 0; }
+    }
+
+    .quick-nav-toggle.has-hint::before {
+      animation: quick-nav-shimmer 1.8s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .quick-nav-toggle.has-hint::before {
+        animation: none;
+      }
+      .quick-nav-toggle::after {
+        transition: none;
+      }
     }
 
     .quick-nav-inner {
@@ -404,8 +536,237 @@
     }
 
     .group h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    #first-aid-detail .group {
+      border-left: 4px solid #d4a430;
+    }
+
+    #when-to-see .group {
+      border-left: 4px solid var(--accent);
+    }
+
+    #find-care .group {
+      border-left: 4px solid #b97a5b;
+    }
+
+    #watch-outs .group {
+      border-left: 4px solid #c84a3a;
+    }
+
+    #faq-section .accordion {
+      border-left: 4px solid #6d635d;
+    }
+
+    .dont-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    @media (min-width: 600px) {
+      .dont-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .dont-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--danger);
+      border: 1px solid var(--danger-line);
+      border-radius: 12px;
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .dont-icon {
+      flex: 0 0 auto;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .dont-text {
+      flex: 1 1 auto;
+    }
+
+    @media (min-width: 600px) {
+      ul.two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 24px;
+      }
+    }
+
+    .sign-list {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    @media (min-width: 600px) {
+      .sign-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .sign-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 12px;
+      background: #fff;
+      border: 1px solid var(--danger-line);
+      border-radius: 10px;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .sign-icon {
+      flex: 0 0 auto;
+    }
+
+    .care-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    @media (min-width: 600px) {
+      .care-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .care-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--warn);
+      border: 1px solid var(--warn-line);
+      border-radius: 12px;
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .care-icon {
+      flex: 0 0 auto;
+      line-height: 1.4;
+    }
+
+    .palm-rule {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      background: var(--accent-soft);
+      border: 1px solid #f3cfbe;
+      border-radius: 12px;
+      margin: 8px 0 12px;
+    }
+
+    .palm-visual {
+      flex: 0 0 auto;
+      width: 84px;
+      height: 84px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .palm-emoji {
+      font-size: 2.4rem;
+      line-height: 1;
+      display: block;
+    }
+
+    .palm-percent {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent-strong);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .palm-rule-text {
+      flex: 1 1 auto;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .palm-rule-text p {
+      margin: 0;
+    }
+
+    .palm-rule-text p + p {
+      margin-top: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .palm-visual {
+        width: 68px;
+        height: 68px;
+      }
+      .palm-emoji {
+        font-size: 1.8rem;
+      }
+      .palm-rule {
+        gap: 10px;
+        padding: 10px;
+      }
+    }
+
+    #burn-knowledge .group {
+      border-left: 4px solid #5b9676;
+    }
+
+    .depth-illustration {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      margin: 8px auto 14px;
+      border-radius: 12px;
+    }
+
+    .care-step {
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin: 10px 0;
+    }
+
+    .care-step h4 {
       margin: 0 0 6px;
       font-size: 1rem;
+      font-weight: 800;
+      color: #3e7a5e;
+    }
+
+    .care-step p {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .care-step ul {
+      margin: 4px 0 0 1.2rem;
+      padding: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .care-step li {
+      margin: 4px 0;
     }
 
     .group p,
@@ -477,6 +838,66 @@
       padding: 0 16px 16px;
       color: #4b403a;
       border-top: 1px solid rgba(234,219,209,0.7);
+    }
+
+    .partners {
+      display: none;
+    }
+
+    @media (min-width: 760px) {
+      .partners {
+        display: block;
+        margin-top: 28px;
+        padding: 18px 18px 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .partners-label {
+        margin: 0 0 10px;
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-align: center;
+        letter-spacing: 0.08em;
+      }
+
+      .partners-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .partners-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.85rem;
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+      }
+
+      .partners-item:hover {
+        opacity: 1;
+      }
+
+      .partners-item img {
+        max-height: 36px;
+        width: auto;
+        display: block;
+      }
+
+      .partners-placeholder {
+        border-style: dashed;
+        color: #b29c8e;
+      }
     }
 
     .footer {
@@ -935,7 +1356,7 @@
         "name": "服の上からやけどした場合はどうすればいいですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "無理に脱がさず、そのまま流水で冷やしてください。皮膚に貼り付いている場合は無理に剥がさないでください。ただし、化学物質が付着している場合は速やかに除去が必要です。"
+          "text": "簡単に脱げる場合には脱いでください。難しい場合には無理に脱がさず、そのまま流水で冷やしてください。皮膚に貼り付いている場合は無理に剥がさないでください。ただし、化学物質が付着している場合は速やかに除去が必要です。"
         }
       },
       {
@@ -943,7 +1364,7 @@
         "name": "どのような場合に119番を考えますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "息が苦しい、意識がもうろうとしている、顔面のやけど、広範囲のやけど、電気や爆発による受傷では、すぐに119番通報を検討してください。"
+          "text": "息が苦しい、意識がもうろうとしている、顔面のやけど、広範囲のやけど、電気や爆発による受傷、閉鎖空間での火災では、すぐに119番通報を検討してください。"
         }
       },
       {
@@ -967,7 +1388,7 @@
         "name": "子どものやけどはすぐ受診したほうがいいですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "子どもは皮膚が薄く、やけどが深くなりやすい特徴があります。また、感染症（トキシックショック症候群など）を引き起こすリスクもあるため注意が必要です。範囲が小さくても、早めの受診を検討してください。"
+          "text": "子どもは皮膚が薄く、やけどが深くなりやすい特徴があります。また、感染症（トキシックショック症候群など）を引き起こすリスクもあるため注意が必要です。範囲が小さくても、早めの受診を検討してください。具体的な症状のサインとして、全身が赤くなる（紅斑）、下痢・嘔吐などの消化器症状、活気がない・ぐったりしている、39℃を超える高熱などがあれば、急いで医療機関を受診してください。"
         }
       },
       {
@@ -1012,6 +1433,14 @@
       },
       {
         "@type": "Question",
+        "name": "やけど後の処置はどうすればいいですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "やけどは時間が経つと深くなることがあります。また、感染を起こすこともあります。そのため、最初の数日は毎日〜こまめな通院で状態を確認することが重要です。数日後〜落ち着いてきたら、医師の指示に従い、自宅での処置を行います。自宅での処置の例：1日1回の処置、泡やシャワーでやさしく洗う、汚れやぬめりを流す、処方された薬を使用、清潔なガーゼで保護。状態が安定すると、通院間隔は徐々にあいていきます。やけどの広さ・深さ・部位によって、必要な処置や通院頻度は異なりますので、必ず医師の指示に従ってください。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "化学物質によるやけどはどう対応すればいいですか？",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -1034,20 +1463,50 @@
         
         <div class="notice" role="note">
           <strong class="notice-title">まずこれだけ（迷ったらこれ）</strong>
-          <ul class="notice-list">
-            <li>・流水で冷やす（5〜20分を目安、氷は直接当てない）</li>
-            <li>・服は無理せず対応（脱げれば脱ぐ、難しければそのまま冷やす）</li>
-            <li>・広い範囲では冷やしすぎず、体を温めることを優先（低体温を予防）</li>
-            <li>・水ぶくれは破らないよう注意</li>
-            <li>・次の場合は119番を検討
-              <ul class="notice-sublist">
-                <li>- 息が苦しい、意識がおかしい</li>
-                <li>- 顔のやけど</li>
-                <li>- 手のひら5枚以上の広さ（広範囲）</li>
-                <li>- 化学薬品・電気・爆発によるやけど</li>
-              </ul>
-            </li>
-          </ul>
+
+          <div class="notice-steps">
+            <div class="notice-step">
+              <span class="notice-step-icon" aria-hidden="true">🚿</span>
+              <span class="notice-step-body">
+                <span class="notice-step-headline">流水で冷やす</span>
+                <span class="notice-step-detail">5〜20分目安。氷は直接当てない</span>
+              </span>
+            </div>
+            <div class="notice-step">
+              <span class="notice-step-icon" aria-hidden="true">👕</span>
+              <span class="notice-step-body">
+                <span class="notice-step-headline">服は無理せず対応</span>
+                <span class="notice-step-detail">脱げれば脱ぐ、難しければそのまま冷やす</span>
+              </span>
+            </div>
+            <div class="notice-step">
+              <span class="notice-step-icon" aria-hidden="true">🌡️</span>
+              <span class="notice-step-body">
+                <span class="notice-step-headline">広範囲では冷やしすぎに注意</span>
+                <span class="notice-step-detail">体温が下がりすぎないよう、体を温めることを優先（低体温を予防）</span>
+              </span>
+            </div>
+            <div class="notice-step">
+              <span class="notice-step-icon" aria-hidden="true">🫧</span>
+              <span class="notice-step-body">
+                <span class="notice-step-headline">水ぶくれは破らない</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="notice-call">
+            <div class="notice-call-headline">
+              <span class="notice-call-headline-icon" aria-hidden="true">🚨</span>
+              <span>こんな時は119番を検討</span>
+            </div>
+            <ul class="notice-call-list">
+              <li>息が苦しい、意識がおかしい</li>
+              <li>顔のやけど</li>
+              <li>手のひら5枚以上の広さ（広範囲）</li>
+              <li>化学薬品・電気・爆発によるやけど</li>
+              <li>閉鎖空間での火災</li>
+            </ul>
+          </div>
         </div>
 
       </section>
@@ -1092,6 +1551,12 @@
               <div class="nav-top">
                 <div class="nav-title">注意点</div>
                 <div class="nav-emoji" aria-hidden="true">⚠️</div>
+              </div>
+            </a>
+            <a class="nav-card" href="#burn-knowledge">
+              <div class="nav-top">
+                <div class="nav-title">やけどの基礎知識</div>
+                <div class="nav-emoji" aria-hidden="true">📚</div>
               </div>
             </a>
             <a class="nav-card" href="#faq-section">
@@ -1196,8 +1661,8 @@
         <div class="group">
           <h3>範囲</h3>
           <ul>
-            <li>手のひらより広い範囲のやけど。</li>
-            <li>複数の場所にやけどがある。</li>
+            <li>手のひら1枚分より広いやけど。</li>
+            <li>複数箇所にやけどがある。</li>
           </ul>
         </div>
         <div class="group">
@@ -1216,6 +1681,7 @@
             <li>化学薬品によるやけど。</li>
             <li>電気や雷によるやけど。</li>
             <li>爆発による受傷。</li>
+            <li>閉鎖空間での火災。</li>
           </ul>
           <p class="small">傷が目立たなくても、体の中に影響が出ていることがあります。</p>
         </div>
@@ -1250,8 +1716,8 @@
         <div class="group">
           <h3>迷ったときの相談先</h3>
           <div class="action-row">
-            <a class="btn btn-secondary" href="#" id="call-7119">#7119 に電話する</a>
-            <a class="btn btn-secondary" href="#" id="call-8000">#8000 に電話する（こども）</a>
+            <a class="btn btn-secondary" href="tel:%237119" id="call-7119">#7119 に電話する</a>
+            <a class="btn btn-secondary" href="tel:%238000" id="call-8000">#8000 に電話する（こども）</a>
           </div>
           <p class="small">#7119 は救急相談窓口、#8000 はこどもの救急相談窓口です。地域によって案内が異なることがあります。</p>
         </div>
@@ -1275,36 +1741,171 @@
         </div>
         <div class="group">
           <h3>やってはいけないこと</h3>
-          <ul>
-            <li>氷や保冷剤を直接当てないようにします。</li>
-            <li>自己判断で対応しないようにします。</li>
-            <li>自己判断で薬や市販の外用薬を使わないようにします。</li>
-            <li>民間療法（油・味噌・歯磨き粉など）を使わないようにします。</li>
-            <li>水ぶくれを無理につぶさないようにします。</li>
-            <li>ラップなどで密閉することは避けます。</li>
-          </ul>
+          <div class="dont-list">
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">氷や保冷剤を直接当てない</span>
+            </div>
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">自己判断で対応しない</span>
+            </div>
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">自己判断で薬や市販の外用薬を使わない</span>
+            </div>
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">民間療法（油・味噌・歯磨き粉など）を使わない</span>
+            </div>
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">水ぶくれを無理につぶさない</span>
+            </div>
+            <div class="dont-item">
+              <span class="dont-icon" aria-hidden="true">❌</span>
+              <span class="dont-text">ラップなどで密閉しない</span>
+            </div>
+          </div>
           <p class="small">自己判断での対応は、かえって状態を悪くすることがあります。</p>
         </div>
         <div class="group">
           <h3>受傷後に注意すること</h3>
-          <ul>
-            <li>やけどした部分は清潔を保つようにします。</li>
-            <li>強くこすったり、刺激を与えないようにします。</li>
-            <li>痛みや見た目に変化がある場合は、早めの受診を検討します。</li>
-          </ul>
+          <div class="care-list">
+            <div class="care-item">
+              <span class="care-icon" aria-hidden="true">💡</span>
+              <span>やけどした部分は清潔を保つ</span>
+            </div>
+            <div class="care-item">
+              <span class="care-icon" aria-hidden="true">💡</span>
+              <span>強くこすったり、刺激を与えない</span>
+            </div>
+            <div class="care-item">
+              <span class="care-icon" aria-hidden="true">💡</span>
+              <span>痛みや見た目に変化がある場合は、早めの受診を検討</span>
+            </div>
+          </div>
         </div>
         <div class="alert-box">
           <strong>感染が疑われるサイン</strong>
-          次のような変化がある場合は、感染の可能性があります。
-          <ul>
-            <li>発熱がある。</li>
-            <li>やけどした部分が赤黒く変化してきた。</li>
-            <li>傷の一部がやわらかく崩れるように見える。</li>
-            <li>いやなにおい（異臭）がしてくる。</li>
-            <li>痛みが強くなってきた。</li>
-          </ul>
+          <p>受傷から数日たってから出てくることもあるため、自宅処置中も次のような変化がないか注意してください。</p>
+          <div class="sign-list">
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>発熱がある</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>やけどした部分が赤黒く変化してきた</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>傷の一部がやわらかく崩れるように見える</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>いやなにおい（異臭）がしてくる</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>痛みが強くなってきた</span>
+            </div>
+          </div>
           <div class="small">このような場合は、早めに医療機関を受診してください。</div>
         </div>
+        <div class="alert-box" id="tss-warning">
+          <strong>小児で気をつけるサイン（TSS：トキシックショック症候群）</strong>
+          <p>小範囲のやけどでも、まれにTSS（細菌の毒素による全身反応）が起こることがあります。次のような症状が出たら、急いで受診してください。</p>
+          <div class="sign-list">
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>全身が赤くなる（紅斑）</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>下痢・嘔吐などの消化器症状</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>活気がない・ぐったりしている</span>
+            </div>
+            <div class="sign-item">
+              <span class="sign-icon" aria-hidden="true">⚠️</span>
+              <span>39℃を超える高熱</span>
+            </div>
+          </div>
+          <div class="small">急いで医療機関を受診してください。</div>
+        </div>
+      </section>
+
+      <section class="card" id="burn-knowledge">
+        <div class="section-head">
+          <div class="section-icon" aria-hidden="true">📚</div>
+          <div>
+            <h2>やけどの基礎知識</h2>
+            <p>やけどを見極めるときに役立つ知識をまとめています。</p>
+          </div>
+        </div>
+        <div class="group">
+          <h3>範囲の目安：手のひら法</h3>
+          <div class="palm-rule">
+            <div class="palm-visual" aria-hidden="true">
+              <div>
+                <span class="palm-emoji">🖐</span>
+                <span class="palm-percent">≒ 1%</span>
+              </div>
+            </div>
+            <div class="palm-rule-text">
+              <p>受傷者本人の手のひら（指まで含む）の広さが、体表のおおよそ <strong>1%</strong> に相当します。</p>
+              <p>例えば手のひら5枚分の広さなら、体表の約5%が目安です。</p>
+              <p class="small">※あくまで簡易的な目安です。実際の判定は医療機関で行われます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>やけどの深さ</h3>
+          <p>やけどは、皮膚のどこまで傷ついたかによって段階に分けられます。深さによって見た目や治り方が違います。</p>
+
+          <img class="depth-illustration"
+               src="burn-depth-diagram.jpg"
+               alt="やけどの深さの図解：Ⅰ度熱傷（表皮のみ・赤みと痛み・水ぶくれなし・数日で治癒）、Ⅱ度熱傷の浅在性（真皮浅層まで・水ぶくれあり・強い痛み・1〜2週間で治癒）と深在性（真皮深層まで・水ぶくれあり・痛み鈍い・3週間以上・傷跡が残る）、Ⅲ度熱傷（皮下組織まで・痛みなし・白黒褐色・自然治癒不可・手術が必要）の比較"
+               loading="lazy">
+
+          <p class="small">※実際の深さの判定は医療機関で行われます。一見浅く見えても深い場合があるため、自己判断せず受診を検討してください。</p>
+        </div>
+
+        <div class="group">
+          <h3>処置の基本</h3>
+          <p>水疱が残っているか、破れているかで対応が変わります。</p>
+
+          <div class="care-step">
+            <h4>水疱がある時</h4>
+            <p>水疱は穴が空いていなければ、最適な創傷被覆剤になります。化学薬品がかかったり、感染したりしていない場合には、1週間程度は潰れないようにすることで、疼痛緩和や治癒促進につながります。</p>
+            <ul>
+              <li>破れないように優しく洗う</li>
+              <li>病院で処方された軟膏などを使用</li>
+              <li>薬局で購入したガーゼで保護</li>
+              <li>1日1回の交換が目安</li>
+            </ul>
+          </div>
+
+          <div class="care-step">
+            <h4>水疱が破れている時</h4>
+            <p>感染などを起こすことがあります。</p>
+            <ul>
+              <li>1日1回は泡で洗浄して、表面のヌメりや黄色の皮膜を除去</li>
+              <li>病院で処方された軟膏などを塗布</li>
+              <li>清潔なガーゼで保護</li>
+              <li>滲出液（怪我のあとに出る汁のような液体）が多くなるため、少し厚めにガーゼを当てるのがおすすめ</li>
+            </ul>
+          </div>
+
+          <p>ガーゼはテープで軽く固定するか、包帯などで覆うのも良い方法です。</p>
+
+          <p class="small">※あくまでも参考知識になるので、詳細は医療機関の指示に従ってください。</p>
+        </div>
+
       </section>
 
       <section class="card" id="faq-section">
@@ -1351,6 +1952,7 @@
                 <li>顔面のやけど</li>
                 <li>広範囲のやけど</li>
                 <li>電気や爆発による受傷</li>
+                <li>閉鎖空間での火災</li>
               </ul>
             </div>
           </details>
@@ -1383,6 +1985,7 @@
               <p>子どもは皮膚が薄く、やけどが深くなりやすい特徴があります。</p>
               <p>また、感染症（トキシックショック症候群など）を引き起こすリスクもあるため注意が必要です。</p>
               <p>範囲が小さくても、早めの受診を検討してください。</p>
+              <p>👉 具体的な症状のサインは <a href="#tss-warning">「小児で気をつけるサイン（TSS）」</a> をご覧ください。</p>
             </div>
           </details>
 
@@ -1628,7 +2231,7 @@
           </div>
 
           <div class="survey-binary">
-            <button class="btn btn-primary" type="button" id="survey-submit-extra">送信して検索へ進む</button>
+            <button class="btn btn-primary" type="button" id="survey-submit-extra">送信してアンケート終了</button>
             <button class="btn btn-secondary" type="button" id="survey-skip-extra">追加アンケートをスキップ</button>
           </div>
         </div>
@@ -1643,6 +2246,21 @@
       </div>
     </div>
 
+    <section class="partners" aria-label="関連サイト">
+      <p class="partners-label">関連サイト</p>
+      <div class="partners-list">
+        <!--
+          バナー追加例（画像）:
+            <a class="partners-item" href="https://example.com" target="_blank" rel="noopener">
+              <img src="partner-logo.png" alt="パートナー名">
+            </a>
+          バナー追加例（テキストのみ）:
+            <a class="partners-item" href="https://example.com" target="_blank" rel="noopener">パートナー名</a>
+        -->
+        <div class="partners-item partners-placeholder">近日掲載予定</div>
+      </div>
+    </section>
+
     <footer class="footer">
       <p><strong>免責</strong>：このページは、一般向けの参考情報です。診断や治療、受診先の決定を行うものではありません。症状や状況に応じて、最終的な判断は医療機関で行ってください。</p>
       <ul class="disclaimer-list">
@@ -1655,7 +2273,7 @@
       <div class="small" style="margin-top:12px; line-height:1.6;">
         <strong>運営</strong>：Burnova Project<br>
         <strong>監修</strong>：米田和弘（医師）<br>
-        熱傷専門医・American Brun Life Support providor・救急科専門医・外科専門医
+        熱傷専門医・American Burn Life Support Provider・救急科専門医・外科専門医
       </div>
 
       <div class="small" style="margin-top:10px;">
@@ -1710,10 +2328,9 @@
       const surveyLink = document.getElementById('survey-link');
       const surveyNavTrigger = document.getElementById('survey-nav-trigger');
 
-      let pendingSearchQuery = null;
-      let pendingSearchStarted = false;
       let sessionStartDate = new Date();
       const formDataState = {};
+      let surveySent = false;
 
       function formatDateTime(date) {
         const yyyy = date.getFullYear();
@@ -1744,7 +2361,7 @@
       }
 
       function resetSurveyState() {
-        pendingSearchStarted = false;
+        surveySent = false;
         Object.keys(formDataState).forEach((key) => delete formDataState[key]);
         clearSelectionState();
 
@@ -1776,21 +2393,6 @@
         );
       }
 
-      function openSurveyModal(query, searchLabel) {
-        pendingSearchQuery = query;
-        sessionStartDate = new Date();
-        resetSurveyState();
-
-        formDataState[ENTRY_SEARCH_TYPE] = searchLabel;
-        formDataState[ENTRY_SESSION_START] = formatDateTime(sessionStartDate);
-        formDataState[ENTRY_PREFECTURE] = '';
-
-        surveyModal.classList.add('is-open');
-        surveyModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-
       function openSurveyForm() {
         resetSurveyState();
         formDataState[ENTRY_SESSION_START] = formatDateTime(sessionStartDate);
@@ -1816,23 +2418,24 @@
         }
       }
 
+      function hasCompleteStep1Data() {
+        return !!(formDataState[ENTRY_HELPFUL] && formDataState[ENTRY_SATISFACTION]);
+      }
+
       function closeSurveyModal() {
+        if (!surveySent && hasCompleteStep1Data()) {
+          surveySent = true;
+          captureAutoFields();
+          collectStep2Fields();
+          try {
+            sendToGoogleForm(formDataState);
+          } catch (error) {
+            console.error(error);
+          }
+        }
         surveyModal.classList.remove('is-open');
         surveyModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-      }
-
-      function proceedToAction() {
-        if (!pendingSearchQuery || pendingSearchStarted) return;
-        pendingSearchStarted = true;
-        closeSurveyModal();
-
-        if (pendingSearchQuery.startsWith('tel:')) {
-          window.location.href = pendingSearchQuery;
-          return;
-        }
-
-        searchNearby(pendingSearchQuery);
       }
 
       async function sendToGoogleForm(payload) {
@@ -1942,16 +2545,12 @@
         searchNearby('救急病院');
       });
 
-      call7119Btn?.addEventListener('click', async (event) => {
-        event.preventDefault();
-        await logSearchAction('救急相談 #7119');
-        window.location.href = 'tel:#7119';
+      call7119Btn?.addEventListener('click', () => {
+        logSearchAction('救急相談 #7119');
       });
 
-      call8000Btn?.addEventListener('click', async (event) => {
-        event.preventDefault();
-        await logSearchAction('小児相談 #8000');
-        window.location.href = 'tel:#8000';
+      call8000Btn?.addEventListener('click', () => {
+        logSearchAction('小児相談 #8000');
       });
 
       surveyLink?.addEventListener('click', () => {
@@ -1987,6 +2586,7 @@
       surveySkipBtn?.addEventListener('click', async () => {
         if (!validateStep1()) return;
         captureAutoFields();
+        surveySent = true;
         try {
           await sendToGoogleForm(formDataState);
         } catch (error) {
@@ -1999,6 +2599,7 @@
         if (!validateStep1()) return;
         captureAutoFields();
         collectStep2Fields();
+        surveySent = true;
         try {
           await sendToGoogleForm(formDataState);
         } catch (error) {
@@ -2010,6 +2611,7 @@
       surveySkipExtraBtn?.addEventListener('click', async () => {
         if (!validateStep1()) return;
         captureAutoFields();
+        surveySent = true;
         try {
           await sendToGoogleForm(formDataState);
         } catch (error) {
@@ -2082,6 +2684,8 @@
       }
 
       quickNavToggle?.addEventListener('click', function () {
+        markHintShown();
+        this.classList.remove('has-hint');
         const isOpen = quickNav.classList.toggle('is-open');
         this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         this.innerHTML = isOpen
@@ -2126,6 +2730,43 @@
       window.addEventListener('hashchange', function () {
         scrollToHash(window.location.hash, true);
       });
+
+      const HINT_STORAGE_KEY = 'burnova_nav_hint_shown';
+      let hintObserver = null;
+
+      function markHintShown() {
+        try { localStorage.setItem(HINT_STORAGE_KEY, '1'); } catch (e) {}
+        if (hintObserver) {
+          hintObserver.disconnect();
+          hintObserver = null;
+        }
+      }
+
+      function setupHintObserver() {
+        if (!quickNavToggle || !('IntersectionObserver' in window)) return;
+        if (window.innerWidth > 759) return;
+
+        let alreadyShown = false;
+        try { alreadyShown = localStorage.getItem(HINT_STORAGE_KEY) === '1'; } catch (e) {}
+        if (alreadyShown) return;
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        hintObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            quickNavToggle.classList.add('has-hint');
+            quickNavToggle.addEventListener('animationend', function () {
+              quickNavToggle.classList.remove('has-hint');
+            }, { once: true });
+            markHintShown();
+          });
+        }, { threshold: 0.8 });
+
+        hintObserver.observe(quickNavToggle);
+      }
+
+      setupHintObserver();
     })();
   </script>
 </body>
